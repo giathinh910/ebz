@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="bootstrap.css">
 	<style>
 		#map {
-			height: 400px;
+			height: 500px;
 			width: 100%;
 		}
 	</style>
