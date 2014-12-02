@@ -1,6 +1,6 @@
 <div class="container">
 	<h1>Map</h1>
-	<div id="map"></div>
+	<div id="map" style="height: 500px"></div>
 </div>
 
 

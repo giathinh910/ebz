@@ -8,8 +8,8 @@ class Location extends CI_Controller {
 		// $this->load->Model(array('Mstaff'));
 	}
 	public function index() {
-		$this->load->view('layout/head.php');
+		$this->load->view('front/layout/head.php');
 		$this->load->view('front/map.php');
-		$this->load->view('layout/foot.php');
+		$this->load->view('front/layout/foot.php');
 	}
 }
