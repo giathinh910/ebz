@@ -15,18 +15,28 @@
 		var map = new google.maps.Map(map_canvas, map_options);
 		
 		getAllLocations(function(response) {
+			// Convert response string to json object
 			var locations = $.parseJSON(response);
-			console.log(locations);
-			
-			// for (var i = 0; i < response.length; i++) {
-			// }
+			// Fetch all results
+			for (var i = 0; i < locations.length; i++) {
+				// Convert coordination string to array
+				var cor = locations[i]['loc_coordination'].split(',');
+				// Print all marker to the map
+				var marker = new google.maps.Marker({
+					map: map,
+					position: new google.maps.LatLng(cor[0],cor[1]),
+					icon: locations[i]['loc_icon'],
+					title: locations[i]['loc_name']
+				});
+				var infowindow = new google.maps.InfoWindow();
+				google.maps.event.addListener(marker, 'click', (function(marker, i) {
+					return function() {
+						infowindow.setContent(locations[i]['loc_brief']);
+						infowindow.open(map, marker);
+					}
+				})(marker, i));
+			}
 		});
-		// var marker = new google.maps.Marker({
-		// 	position: new google.maps.LatLng(['loc_coordination'],
-		// 	map: map,
-		// 	icon: place['loc_icon'],
-		// 	title: place['loc_name']
-		// });
 	}
 
 	google.maps.event.addDomListener(window, 'load', initialize);
