@@ -31,13 +31,16 @@ class Location extends CI_Controller {
 	}
 	public function getLocations() {
 		$locations = $this->Mlocation->getAllLocations();
-		// var_dump($locations);
+		$output = "";
 		foreach ($locations as $key => $location) {
-			echo '{';
+			$output .= "{";
 			foreach ($location as $key => $value) {
-				echo $key." : '".$value."',";
+				$output .= '"'.$key.'":"'.$value.'",';
 			}
-			echo '},';
+			$output = rtrim($output, ",");
+			$output .= "},";
 		}
+		$output = rtrim($output, ",");
+		echo '['.$output.']';
 	}
 }
