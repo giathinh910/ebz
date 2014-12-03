@@ -4,25 +4,7 @@
 <script src="//maps.googleapis.com/maps/api/js"></script>
 <script>
 	var theme = [{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]}];
-	<?php
-		// $places = array(
-		// 	array (
-		// 		"placeName" => "Quốc tử giám",
-		// 		"coordination" => "new google.maps.LatLng(21.027424, 105.832716)",
-		// 		"icon" => "http://localhost/resource/icon/200_flat_icons/png/64px/16.png",
-		// 	),
-		// 	array (
-		// 		"placeName" => "Bệnh viện 108",
-		// 		 "coordination" => "new google.maps.LatLng(21.018904, 105.859667)",
-		// 		 "icon" => "http://localhost/resource/icon/200_flat_icons/png/64px/20.png",
-		// 	),
-		// 	array (
-		// 		"placeName" => "Bệnh viện nhi trung ương",
-		// 		 "coordination" => "new google.maps.LatLng(21.024673, 105.808683)",
-		// 		 "icon" => "http://localhost/resource/icon/200_flat_icons/png/64px/32.png",
-		// 	)
-		// )
-	 ?>
+
 	function initialize() {
 		var map_canvas = document.getElementById('map');
 		var myLatlng = new google.maps.LatLng(21.027424, 105.832716);
@@ -38,7 +20,7 @@
 		<?php
 			foreach ($places as $key => $place) {
 		?>
-		var mapMarker = new google.maps.Marker({
+		var marker<?php echo $place['loc_id'] ?> = new google.maps.Marker({
 			position: <?php echo 'new google.maps.LatLng('.$place['loc_coordination'].')' ?>,
 			map: map,
 			icon: <?php echo '"'.$place['loc_icon'].'"' ?>,
