@@ -29,4 +29,15 @@ class Location extends CI_Controller {
 		$this->Mlocation->addLocation($location);
 		redirect(base_url('location'));
 	}
+	public function getLocations() {
+		$locations = $this->Mlocation->getAllLocations();
+		// var_dump($locations);
+		foreach ($locations as $key => $location) {
+			echo '{';
+			foreach ($location as $key => $value) {
+				echo $key." : '".$value."',";
+			}
+			echo '},';
+		}
+	}
 }

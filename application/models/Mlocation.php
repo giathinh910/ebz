@@ -12,4 +12,10 @@ class Mlocation extends CI_Model{
 	public function getAllLocations() {
 		return $this->db->get('location')->result_array();
 	}
+	public function getLocationById($id) {
+		return $this->db
+			->where('loc_id', $id)
+			->get('location')
+			->result_array();
+	}
 }

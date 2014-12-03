@@ -1,5 +1,8 @@
-<div id="map" style="height: 550px"></div>
+<div class="container">
+	<button href="#getlocation" id="get-locations" class="btn btn-success">Get location</button>
+</div>
 
+<div id="map" style="height: 550px"></div>
 
 <script src="//maps.googleapis.com/maps/api/js"></script>
 <script>
@@ -31,4 +34,15 @@
 		?>
 	}
 	google.maps.event.addDomListener(window, 'load', initialize);
+
+	$("#get-locations").on('click', function() {                
+		$.ajax({
+			type: "GET",
+			url: "http://www/ebz/location/getLocations",
+			dataType: "html",
+			success: function(response){
+				console.log(response);
+			}
+		});
+	});
 </script>
