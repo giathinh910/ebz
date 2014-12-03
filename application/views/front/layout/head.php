@@ -6,8 +6,6 @@
 	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 	<!-- bootstrap -->
 	<?php echo link_tag('assets/ebz/css/bootstrap.min.css'); ?>
-	<!-- Theme style -->
-	<?php echo link_tag('assets/ebz/css/bootstrap-theme.min.css'); ?>
 	<!-- JQuery -->
 	<script src="<?php echo base_url('assets/ebz/js/jquery.js');?>"></script>
 
@@ -15,7 +13,7 @@
 
 <body>
 
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-inverse" role="navigation">
 	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
