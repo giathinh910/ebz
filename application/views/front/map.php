@@ -36,7 +36,12 @@
 					var infowindow = new google.maps.InfoWindow();
 					google.maps.event.addListener(marker, 'click', (function(marker, i) {
 						return function() {
-							infowindow.setContent(locations[i]['loc_brief']);
+							var infoContent =
+							"<h2 style='font-size: 24px'>"+locations[i]['loc_name']+"</h2>"+
+							"<address style='font-weight: 700'>"+locations[i]['loc_address']+"</address>"+
+							"<p>"+locations[i]['loc_brief']+"</p>"+
+							"<a href="+locations[i]['loc_id']+" class='btn btn-info pull-right' style='margin-bottom: 15px'>Chi tiết</a>";
+							infowindow.setContent(infoContent);
 							infowindow.open(map, marker);
 						}
 					})(marker, i));
