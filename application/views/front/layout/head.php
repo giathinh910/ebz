@@ -6,6 +6,8 @@
 	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 	<!-- bootstrap -->
 	<?php echo link_tag('assets/ebz/css/bootstrap.min.css'); ?>
+	<!-- custom stylesheet -->
+	<?php echo link_tag('assets/ebz/css/style.css'); ?>
 	<!-- JQuery -->
 	<script src="<?php echo base_url('assets/ebz/js/jquery.js');?>"></script>
 
@@ -13,7 +15,7 @@
 
 <body>
 
-<nav class="navbar navbar-inverse" role="navigation">
+<nav class="navbar navbar-inverse" role="navigation" style="margin-bottom: 0">
 	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
@@ -41,25 +43,12 @@
 				<li><a href="#">Thông tin</a></li>
 				<li><a href="#">Liên hệ</a></li>
 			</ul>
-			<form class="navbar-form navbar-left" role="search">
+			<form class="navbar-form navbar-right" role="search">
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Nhập từ khóa ...">
 				</div>
-				<button type="submit" class="btn btn-default">Tìm kiếm</button>
+				<button type="submit" class="btn btn-success">Tìm kiếm</button>
 			</form>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Link</a></li>
-				<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-					<li><a href="#">Action</a></li>
-					<li><a href="#">Another action</a></li>
-					<li><a href="#">Something else here</a></li>
-					<li class="divider"></li>
-					<li><a href="#">Separated link</a></li>
-					</ul>
-				</li>
-			</ul>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container -->
 </nav>

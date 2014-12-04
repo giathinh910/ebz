@@ -22,16 +22,29 @@ class Location extends CI_Controller {
 	}
 	public function add_location_exec() {
 		$location = array (
-			"loc_name" => $this->input->post('placeName'),
+			"loc_name" => $this->input->post('name'),
+			"loc_address" => $this->input->post('address'),
+			"loc_province" => $this->input->post('province'),
 			"loc_coordination" => $this->input->post('coordination'),
-			"loc_icon" => $this->input->post('icon')
+			"loc_icon" => $this->input->post('icon'),
+			"loc_brief" => $this->input->post('brief'),
+			"loc_detail" => $this->input->post('detail')
 		);
 		$this->Mlocation->addLocation($location);
 		redirect(base_url('location'));
 	}
-	public function getLocations() {
-		$locations = $this->Mlocation->getAllLocations();
+	public function ajax_get_location($option) {
+		$locations = "";
 		$output = "";
+		switch ($option) {
+			case 'all':
+				$locations = $this->Mlocation->getAllLocations();
+				break;
+			
+			default:
+				# code...
+				break;
+		}
 		foreach ($locations as $key => $location) {
 			$output .= "{";
 			foreach ($location as $key => $value) {
