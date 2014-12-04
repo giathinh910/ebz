@@ -8,11 +8,8 @@ class Location extends CI_Controller {
 		$this->load->Model(array('Mlocation'));
 	}
 	public function index() {
-		$data = array (
-			"places" => $this->Mlocation->getAllLocations()
-		);
 		$this->load->view('front/layout/head.php');
-		$this->load->view('front/map.php', $data);
+		$this->load->view('front/map.php');
 		$this->load->view('front/layout/foot.php');
 	}
 	public function add_location() {
@@ -38,7 +35,7 @@ class Location extends CI_Controller {
 		$output = "";
 		switch ($option) {
 			case 'all':
-				$locations = $this->Mlocation->getAllLocations();
+				$locations = $this->Mlocation->ajaxGetAllLocations();
 				break;
 			
 			default:

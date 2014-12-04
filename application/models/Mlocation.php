@@ -9,8 +9,12 @@ class Mlocation extends CI_Model{
 	public function addLocation($data) {
 		$this->db->insert('location', $data); 
 	}
-	public function getAllLocations() {
-		return $this->db->get('location')->result_array();
+	public function ajaxGetAllLocations() {
+		return $this->db
+			->select('loc_id, loc_name, loc_address, loc_coordination, loc_icon, loc_brief')
+			->from('location')
+			->get()
+			->result_array();
 	}
 	public function getLocationById($id) {
 		return $this->db

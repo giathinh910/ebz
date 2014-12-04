@@ -19,6 +19,7 @@
 			var map = new google.maps.Map(map_canvas, map_options);
 			
 			getAllLocations(function(response) {
+				console.log(response);
 				// Convert response string to json object
 				var locations = $.parseJSON(response);
 				// Fetch all results
