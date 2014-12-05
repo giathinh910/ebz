@@ -3,7 +3,6 @@
 
 <script>
 	(function( $ ) {
-		var theme = [{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]}];
 
 		function escapeHtml(text) {
 			var map = {
@@ -20,12 +19,14 @@
 			$.ajax({
 				type: "GET",
 				url: url,
-				dataType: "html",
+				dataType: "json",
 				success: function(response){
 					handleData(response);
 				}
 			});
 		}
+
+		var theme = [{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]}];
 
 		function initialize() {
 			var map_canvas = document.getElementById('map');
@@ -38,11 +39,10 @@
 				scrollwheel: true,
 				styles: theme
 			}
+
 			var map = new google.maps.Map(map_canvas, map_options);
 			
-			ajaxGetData("<?php echo base_url('location/ajax_get_location/all') ?>", function(response) {
-				// Convert response string to json object
-				var locations = $.parseJSON(response);
+			ajaxGetData("<?php echo base_url('location/ajax_get_location/all') ?>", function(locations) {
 				// Fetch all results
 				for (var i = 0; i < locations.length; i++) {
 					// Convert coordination string to array
@@ -61,7 +61,7 @@
 							"<h2 style='font-size: 24px'>"+escapeHtml(locations[i]['loc_name'])+"</h2>"+
 							"<address style='font-weight: 700'>"+escapeHtml(locations[i]['loc_address'])+"</address>"+
 							"<p>"+escapeHtml(locations[i]['loc_brief'])+"</p>"+
-							"<a href="+locations[i]['loc_id']+" class='btn btn-info pull-right' style='margin-bottom: 15px'>Chi tiết</a>";
+							"<a href=<?php echo base_url('location/view_location') ?>/"+locations[i]['loc_id']+" class='btn btn-info pull-right' style='margin-bottom: 15px'>Chi tiết</a>";
 							infowindow.setContent(infoContent);
 							infowindow.open(map, marker);
 						}
@@ -69,7 +69,6 @@
 				}
 			});
 		}
-
 		google.maps.event.addDomListener(window, 'load', initialize);
 	})( jQuery ); // EOF
 </script>
