@@ -1,4 +1,4 @@
-<div id="map" style="height: 550px"></div>
+<div id="map" style="height: 550px; margin-top: -20px"></div>
 <script src="//maps.googleapis.com/maps/api/js"></script>
 
 <script>

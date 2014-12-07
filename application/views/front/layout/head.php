@@ -25,7 +25,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 			</button>
-		<a class="navbar-brand" href="<?php echo base_url() ?>">EBZ digital location</a>
+		<a class="navbar-brand" href="<?php echo base_url() ?>" style="color: #fff">EBZ digital location</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -47,7 +47,7 @@
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Nhập từ khóa ...">
 				</div>
-				<button type="submit" class="btn btn-success">Tìm kiếm</button>
+				<button type="submit" class="btn btn-primary">Tìm địa điểm</button>
 			</form>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container -->

@@ -1,4 +1,23 @@
+/* General
+------------------------------------*/
+body {
+	background: #fafafa;
+}
 .navbar {
 	border-radius: 0;
 	-webkit-border-radius: 0;
+}
+.breadcrumb {
+	background: #f0f0f0 !important;
+}
+
+/* Sections 
+------------------------------------*/
+.gt-catalog h1:first-child,
+.gt-catalog h2:first-child,
+.gt-catalog h3:first-child,
+.gt-catalog h4:first-child,
+.gt-catalog h5:first-child,
+.gt-catalog h6:first-child {
+	margin-top: 0;
 }

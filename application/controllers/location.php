@@ -37,8 +37,11 @@ class Location extends CI_Controller {
 	VIEW
 	 */
 	public function view_location($id) {
+		$data = array(
+			'locations' => $this->Mlocation->getLocationById($id),
+		);
 		$this->load->view('front/layout/head.php');
-		$this->load->view('front/view.php');
+		$this->load->view('front/view.php', $data);
 		$this->load->view('front/layout/foot.php');
 	}
 	/**
