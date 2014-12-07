@@ -34,7 +34,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="<?php echo base_url('location/add_location') ?>"><i class="fa fa-plus"></i> Tạo địa điểm</a></li>
-				<li><a href="<?php echo base_url('location/my_location') ?>"><i class="fa fa-map-marker"></i> Địa điểm của tôi</a></li>
+				<li><a href="<?php echo base_url('location/my_locations') ?>"><i class="fa fa-map-marker"></i> Địa điểm của tôi</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#"><i class="fa fa-unlock"></i> Đăng nhập</a></li>

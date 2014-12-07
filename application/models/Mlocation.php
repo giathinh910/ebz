@@ -7,12 +7,14 @@ class Mlocation extends CI_Model{
 	}
 	public function getLocationByUserId() {
 		return $this->db
+			->join('province', 'province.prv_id = location.loc_province_id')
 			->get('location')
 			->result_array();
 	}
 	public function getLocationById($id) {
 		return $this->db
 			->where('loc_id', $id)
+			->join('province', 'province.prv_id = location.loc_province_id')
 			->get('location')
 			->result_array();
 	}
@@ -32,8 +34,8 @@ class Mlocation extends CI_Model{
 			->update('location', $data);
 	}
 	public function deleteLocation($id) {
-		// $this->db
-		// 	->where('loc_id', $id)
-		// 	->delete('location');
+		$this->db
+			->where('loc_id', $id)
+			->delete('location');
 	}
 }

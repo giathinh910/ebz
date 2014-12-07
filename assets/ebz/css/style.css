@@ -20,13 +20,13 @@ body {
 }
 /* Hide google map term */
 .gmnoprint a, .gmnoprint span {
-    display:none;
+	display: none;
 }
 .gmnoprint div {
-    background:none !important;
+	background:none !important;
 }
 #GMapsID div div a div img{
-    display:none;
+	display: none;
 }
 .gm-style-cc {
 	display: none;

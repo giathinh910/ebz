@@ -10,10 +10,11 @@
 				<input type="text" class="form-control" id="" placeholder="" name="address">
 			</div>
 			<div class="form-group">
-				<label for="">Tỉnh</label>
+				<label for="">Tỉnh thành</label>
 				<select name="province" id="" class="form-control">
-					<option value="1">Hà Nội</option>
-					<option value="2">Thái Bình</option>
+					<?php foreach ($provinces as $key => $province):
+						echo '<option value="'.$province['prv_id'].'">'.$province['prv_name'].'</option>';
+					endforeach ?>
 				</select>
 			</div>
 			<div class="form-group">

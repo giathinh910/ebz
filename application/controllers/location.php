@@ -5,7 +5,7 @@ class Location extends CI_Controller {
 		parent::__construct();
 		$this->load->helper(array('html','url','form'));
 		$this->load->library(array('pagination','form_validation','session'));
-		$this->load->Model(array('Mlocation'));
+		$this->load->Model(array('Mlocation','Mprovince'));
 	}
 	public function index() {
 		$this->load->view('front/layout/head.php');
@@ -16,15 +16,18 @@ class Location extends CI_Controller {
 	ADD
 	 */
 	public function add_location() {
+		$data = array(
+			'provinces' => $this->Mprovince->getAllProvince()
+		);
 		$this->load->view('front/layout/head.php');
-		$this->load->view('front/add.php');
+		$this->load->view('front/add.php', $data);
 		$this->load->view('front/layout/foot.php');
 	}
 	public function add_location_exec() {
 		$location = array (
 			"loc_name" => $this->input->post('name'),
 			"loc_address" => $this->input->post('address'),
-			"loc_province" => $this->input->post('province'),
+			"loc_province_id" => $this->input->post('province'),
 			"loc_coordination" => $this->input->post('coordination'),
 			"loc_icon" => $this->input->post('icon'),
 			"loc_brief" => $this->input->post('brief'),
@@ -60,11 +63,13 @@ class Location extends CI_Controller {
 		if ($this->session->flashdata('message') != null) {
 			$data = array(
 				'location' => $this->Mlocation->getLocationById($id),
+				'provinces' => $this->Mprovince->getAllProvince(),
 				'successMessage' => $this->session->flashdata('message')
 			);
 		} else {
 			$data = array(
 				'location' => $this->Mlocation->getLocationById($id),
+				'provinces' => $this->Mprovince->getAllProvince()
 			);
 		}
 		$this->load->view('front/layout/head.php');
@@ -76,7 +81,7 @@ class Location extends CI_Controller {
 		$location = array (
 			"loc_name" => $this->input->post('name'),
 			"loc_address" => $this->input->post('address'),
-			"loc_province" => $this->input->post('province'),
+			"loc_province_id" => $this->input->post('province'),
 			"loc_coordination" => $this->input->post('coordination'),
 			"loc_icon" => $this->input->post('icon'),
 			"loc_brief" => $this->input->post('brief'),

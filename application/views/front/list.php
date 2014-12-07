@@ -41,7 +41,7 @@
 					<tr>
 						<th><?php echo $location['loc_name'] ?></th>
 						<th><?php echo $location['loc_address'] ?></th>
-						<th><?php echo $location['loc_province'] ?></th>
+						<th><?php echo $location['prv_name'] ?></th>
 						<th><?php echo $location['loc_avatar'] ?></th>
 						<th>
 							<a href="<?php echo base_url('location/edit_location/'.$location['loc_id']) ?>" class="btn btn-default">Sửa</a>

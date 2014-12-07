@@ -33,8 +33,10 @@
 			<div class="form-group">
 				<label for="">Tỉnh</label>
 				<select name="province" id="" class="form-control">
-					<option value="1">Hà Nội</option>
-					<option value="2">Thái Bình</option>
+					<?php foreach ($provinces as $key => $province):
+						$selected = ($province['prv_id'] == $location[0]['loc_province'] ? 'selected' : '');
+						echo '<option value="'.$province['prv_id'].'" '.$selected.'>'.$province['prv_name'].'</option>';
+					endforeach ?>
 				</select>
 			</div>
 			<div class="form-group">
