@@ -13,17 +13,24 @@ body {
 
 /* Sections 
 ------------------------------------*/
-#map {
+.gt-home-map {
 	position: relative;
 	margin-top: -20px;
 	height: 450px;
+}
+.gt-single-location-map {
+	height: 350px;
+	overflow: hidden;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
 }
 /* Hide google map term */
 .gmnoprint a, .gmnoprint span {
 	display: none;
 }
 .gmnoprint div {
-	background:none !important;
+	/*background:none !important;*/
 }
 #GMapsID div div a div img{
 	display: none;

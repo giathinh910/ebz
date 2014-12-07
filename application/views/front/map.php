@@ -1,4 +1,4 @@
-<div id="map"></div>
+<div id="map" class="gt-home-map"></div>
 <script src="//maps.googleapis.com/maps/api/js"></script>
 
 <script>
