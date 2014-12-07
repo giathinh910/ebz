@@ -27,4 +27,9 @@ class Mlocation extends CI_Model{
 			->get()
 			->result_array();
 	}
+	public function deleteLocation($id) {
+		$this->db
+			->where('loc_id', $id)
+			->delete('location');
+	}
 }

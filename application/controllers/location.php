@@ -78,6 +78,14 @@ class Location extends CI_Controller {
 		redirect(base_url('location/edit_location/'.$id));
 	}
 	/**
+	DELETE
+	 */
+	public function delete_location($id) {
+		$this->Mlocation->deleteLocation($id);
+		$this->session->set_flashdata('message','Cập nhật thành công');
+		// redirect(base_url('location/edit_location/'.$id));
+	}
+	/**
 	JSON
 	 */
 	public function ajax_get_location($option) {
