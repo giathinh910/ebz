@@ -34,6 +34,14 @@ class Location extends CI_Controller {
 		redirect(base_url('location'));
 	}
 	/**
+	VIEW
+	 */
+	public function view_location($id) {
+		$this->load->view('front/layout/head.php');
+		$this->load->view('front/view.php');
+		$this->load->view('front/layout/foot.php');
+	}
+	/**
 	EDIT / UPDATE
 	 */
 	public function edit_location($id) {
