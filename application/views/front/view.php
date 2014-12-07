@@ -20,7 +20,7 @@
 				<div class="list-group">
 					<div href="#" class="list-group-item">
 						<h4 style="font-size: 16px; color: #999" class="list-group-item-heading">Ngành nghề / Dịch vụ</h4>
-						<p class="list-group-item-text"><?php echo fieldCheck($location[0]['loc_category']) ?></p>
+						<p class="list-group-item-text"><?php echo fieldCheck($location[0]['ctg_name']) ?></p>
 					</div>
 					<div href="#" class="list-group-item">
 						<h4 style="font-size: 16px; color: #999" class="list-group-item-heading">Địa chỉ</h4>

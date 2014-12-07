@@ -31,13 +31,30 @@
 				<input type="text" class="form-control" id="" placeholder="" name="address" value="<?php if (isset($location)) echo htmlspecialchars($location[0]['loc_address']) ?>">
 			</div>
 			<div class="form-group">
-				<label for="">Tỉnh</label>
+				<label for="">Ngành nghề / Dịch vụ</label>
+				<select name="category" id="" class="form-control">
+					<?php foreach ($categories as $key => $category):
+						$selected = ($category['ctg_id'] == $location[0]['loc_category_id'] ? 'selected' : '');
+						echo '<option value="'.$category['ctg_id'].'" '.$selected.'>'.$category['ctg_name'].'</option>';
+					endforeach ?>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="">Tỉnh thành</label>
 				<select name="province" id="" class="form-control">
 					<?php foreach ($provinces as $key => $province):
-						$selected = ($province['prv_id'] == $location[0]['loc_province'] ? 'selected' : '');
+						$selected = ($province['prv_id'] == $location[0]['loc_province_id'] ? 'selected' : '');
 						echo '<option value="'.$province['prv_id'].'" '.$selected.'>'.$province['prv_name'].'</option>';
 					endforeach ?>
 				</select>
+			</div>
+			<div class="form-group">
+				<label for="">Điện thoại</label>
+				<input type="text" class="form-control" id="" placeholder="" name="phone" value="<?php if (isset($location)) echo htmlspecialchars($location[0]['loc_phone']) ?>">
+			</div>
+			<div class="form-group">
+				<label for="">Email</label>
+				<input type="text" class="form-control" id="" placeholder="" name="email" value="<?php if (isset($location)) echo htmlspecialchars($location[0]['loc_email']) ?>">
 			</div>
 			<div class="form-group">
 				<label for="">Tọa độ</label>

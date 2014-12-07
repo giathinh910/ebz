@@ -5,7 +5,7 @@ class Location extends CI_Controller {
 		parent::__construct();
 		$this->load->helper(array('html','url','form'));
 		$this->load->library(array('pagination','form_validation','session'));
-		$this->load->Model(array('Mlocation','Mprovince'));
+		$this->load->Model(array('Mlocation','Mprovince', 'Mcategory'));
 	}
 	public function index() {
 		$this->load->view('front/layout/head.php');
@@ -17,7 +17,8 @@ class Location extends CI_Controller {
 	 */
 	public function add_location() {
 		$data = array(
-			'provinces' => $this->Mprovince->getAllProvince()
+			'provinces' => $this->Mprovince->getAllProvince(),
+			'categories' => $this->Mcategory->getAllCategory(),
 		);
 		$this->load->view('front/layout/head.php');
 		$this->load->view('front/add.php', $data);
@@ -27,7 +28,10 @@ class Location extends CI_Controller {
 		$location = array (
 			"loc_name" => $this->input->post('name'),
 			"loc_address" => $this->input->post('address'),
+			"loc_phone" => $this->input->post('phone'),
+			"loc_email" => $this->input->post('email'),
 			"loc_province_id" => $this->input->post('province'),
+			"loc_category_id" => $this->input->post('category'),
 			"loc_coordination" => $this->input->post('coordination'),
 			"loc_icon" => $this->input->post('icon'),
 			"loc_brief" => $this->input->post('brief'),
@@ -64,12 +68,14 @@ class Location extends CI_Controller {
 			$data = array(
 				'location' => $this->Mlocation->getLocationById($id),
 				'provinces' => $this->Mprovince->getAllProvince(),
+				'categories' => $this->Mcategory->getAllCategory(),
 				'successMessage' => $this->session->flashdata('message')
 			);
 		} else {
 			$data = array(
 				'location' => $this->Mlocation->getLocationById($id),
-				'provinces' => $this->Mprovince->getAllProvince()
+				'provinces' => $this->Mprovince->getAllProvince(),
+				'categories' => $this->Mcategory->getAllCategory(),
 			);
 		}
 		$this->load->view('front/layout/head.php');
@@ -81,7 +87,10 @@ class Location extends CI_Controller {
 		$location = array (
 			"loc_name" => $this->input->post('name'),
 			"loc_address" => $this->input->post('address'),
+			"loc_phone" => $this->input->post('phone'),
+			"loc_email" => $this->input->post('email'),
 			"loc_province_id" => $this->input->post('province'),
+			"loc_category_id" => $this->input->post('category'),
 			"loc_coordination" => $this->input->post('coordination'),
 			"loc_icon" => $this->input->post('icon'),
 			"loc_brief" => $this->input->post('brief'),

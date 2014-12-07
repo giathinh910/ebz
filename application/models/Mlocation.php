@@ -15,6 +15,7 @@ class Mlocation extends CI_Model{
 		return $this->db
 			->where('loc_id', $id)
 			->join('province', 'province.prv_id = location.loc_province_id')
+			->join('category', 'category.ctg_id = location.loc_category_id')
 			->get('location')
 			->result_array();
 	}

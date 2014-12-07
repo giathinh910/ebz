@@ -6,6 +6,14 @@
 				<input type="text" class="form-control" id="" placeholder="" name="name">
 			</div>
 			<div class="form-group">
+				<label for="">Ngành nghề / Dịch vụ</label>
+				<select name="category" id="" class="form-control">
+					<?php foreach ($categories as $key => $category):
+						echo '<option value="'.$category['ctg_id'].'">'.$category['ctg_name'].'</option>';
+					endforeach ?>
+				</select>
+			</div>
+			<div class="form-group">
 				<label for="">Địa chỉ</label>
 				<input type="text" class="form-control" id="" placeholder="" name="address">
 			</div>
@@ -16,6 +24,14 @@
 						echo '<option value="'.$province['prv_id'].'">'.$province['prv_name'].'</option>';
 					endforeach ?>
 				</select>
+			</div>
+			<div class="form-group">
+				<label for="">Điện thoại</label>
+				<input type="text" class="form-control" id="" placeholder="" name="phone">
+			</div>
+			<div class="form-group">
+				<label for="">Email</label>
+				<input type="text" class="form-control" id="" placeholder="" name="email">
 			</div>
 			<div class="form-group">
 				<label for="">Tọa độ</label>
