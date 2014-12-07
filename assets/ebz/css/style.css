@@ -13,6 +13,25 @@ body {
 
 /* Sections 
 ------------------------------------*/
+#map {
+	position: relative;
+	margin-top: -20px;
+	height: 450px;
+}
+/* Hide google map term */
+.gmnoprint a, .gmnoprint span {
+    display:none;
+}
+.gmnoprint div {
+    background:none !important;
+}
+#GMapsID div div a div img{
+    display:none;
+}
+.gm-style-cc {
+	display: none;
+}
+
 .gt-catalog h1:first-child,
 .gt-catalog h2:first-child,
 .gt-catalog h3:first-child,

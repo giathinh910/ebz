@@ -38,7 +38,7 @@ class Location extends CI_Controller {
 	 */
 	public function view_location($id) {
 		$data = array(
-			'locations' => $this->Mlocation->getLocationById($id),
+			'location' => $this->Mlocation->getLocationById($id),
 		);
 		$this->load->view('front/layout/head.php');
 		$this->load->view('front/view.php', $data);
@@ -50,12 +50,12 @@ class Location extends CI_Controller {
 	public function edit_location($id) {
 		if ($this->session->flashdata('message') != null) {
 			$data = array(
-				'thisLocation' => $this->Mlocation->getLocationById($id),
+				'location' => $this->Mlocation->getLocationById($id),
 				'successMessage' => $this->session->flashdata('message')
 			);
 		} else {
 			$data = array(
-				'thisLocation' => $this->Mlocation->getLocationById($id),
+				'location' => $this->Mlocation->getLocationById($id),
 			);
 		}
 		$this->load->view('front/layout/head.php');

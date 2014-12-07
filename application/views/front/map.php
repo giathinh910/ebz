@@ -1,4 +1,4 @@
-<div id="map" style="height: 550px; margin-top: -20px"></div>
+<div id="map"></div>
 <script src="//maps.googleapis.com/maps/api/js"></script>
 
 <script>
@@ -33,10 +33,10 @@
 			var myLatlng = new google.maps.LatLng(21.027424, 105.832716);
 			var map_options = {
 				center: myLatlng,
-				zoom: 14,
+				zoom: 15,
 				mapTypeId: 'roadmap',
 				disableDefaultUI: false,
-				scrollwheel: true,
+				scrollwheel: false,
 				styles: theme
 			}
 
@@ -70,5 +70,11 @@
 			});
 		}
 		google.maps.event.addDomListener(window, 'load', initialize);
+
+		$(document).on('ready', function() {
+		})
+
+		$(window).on('resize', function() {
+		})
 	})( jQuery ); // EOF
 </script>
