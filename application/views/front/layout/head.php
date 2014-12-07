@@ -6,6 +6,8 @@
 	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 	<!-- bootstrap -->
 	<?php echo link_tag('assets/ebz/css/bootstrap.min.css'); ?>
+	<!-- fontawesome -->
+	<?php echo link_tag('assets/ebz/css/font-awesome.min.css'); ?>
 	<!-- custom stylesheet -->
 	<?php echo link_tag('assets/ebz/css/style.css'); ?>
 	<!-- JQuery -->
@@ -25,30 +27,25 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 			</button>
-		<a class="navbar-brand" href="<?php echo base_url() ?>" style="color: #fff">EBZ digital location</a>
+		<a class="navbar-brand" href="<?php echo base_url() ?>" style="color: #fff"><i class="fa fa-map-marker"></i> EBZ digital location</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
+				<li><a href="<?php echo base_url('location/add_location') ?>"><i class="fa fa-plus"></i> Tạo địa điểm</a></li>
+				<li><a href="<?php echo base_url('location/my_location') ?>"><i class="fa fa-map-marker"></i> Địa điểm của tôi</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#"><i class="fa fa-unlock"></i> Đăng nhập</a></li>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Địa điểm<span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-user"></i> Thinh Bui<span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="<?php echo base_url('location') ?>">Bản đồ</a></li>
-						<li><a href="#">Cửa hàng</a></li>
-						<li class="divider"></li>
-						<li><a href="<?php echo base_url('location/add_location') ?>">Tạo địa điểm cho riêng bạn</a></li>
+						<li><a href="#"><i class="fa fa-gear"></i> Cài đặt</a></li>
+						<li><a href="#"><i class="fa fa-lock"></i> Đăng xuất</a></li>
 					</ul>
 				</li>
-				<li><a href="#">Thông tin</a></li>
-				<li><a href="#">Liên hệ</a></li>
 			</ul>
-			<form class="navbar-form navbar-right" role="search">
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Nhập từ khóa ...">
-				</div>
-				<button type="submit" class="btn btn-primary">Tìm địa điểm</button>
-			</form>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container -->
 </nav>

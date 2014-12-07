@@ -36,6 +36,15 @@ class Location extends CI_Controller {
 	/**
 	VIEW
 	 */
+	public function my_locations() {
+		$data = array(
+			'locations' => $this->Mlocation->getLocationByUserId(),
+			'successMessage' => $this->session->flashdata('message')
+		);
+		$this->load->view('front/layout/head.php');
+		$this->load->view('front/list.php', $data);
+		$this->load->view('front/layout/foot.php');
+	}
 	public function view_location($id) {
 		$data = array(
 			'location' => $this->Mlocation->getLocationById($id),
@@ -82,8 +91,8 @@ class Location extends CI_Controller {
 	 */
 	public function delete_location($id) {
 		$this->Mlocation->deleteLocation($id);
-		$this->session->set_flashdata('message','Cập nhật thành công');
-		// redirect(base_url('location/edit_location/'.$id));
+		$this->session->set_flashdata('message','Đã xóa địa điểm');
+		redirect(base_url('location/my_locations/'.$id));
 	}
 	/**
 	JSON

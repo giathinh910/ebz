@@ -12,7 +12,7 @@
 	<div class="container">
 		<div class="alert alert-success alert-dismissible" role="alert">
 			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-			<?php echo $successMessage ?>. <strong><a href="<?php echo base_url('location/view_location/'.$location[0]['loc_id']) ?>" class="alert-link">Xem ngay</a></strong>
+			<i class="fa fa-info-circle"></i> <?php echo $successMessage ?>. <strong><a href="<?php echo base_url('location/view_location/'.$location[0]['loc_id']) ?>" class="alert-link">Xem ngay</a></strong>
 		</div>
 	</div>
 <?php

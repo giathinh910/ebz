@@ -5,14 +5,10 @@ class Mlocation extends CI_Model{
 		parent::__construct();
 		$this->load->database();
 	}
-
-	public function addLocation($data) {
-		$this->db->insert('location', $data); 
-	}
-	public function updateLocation($id, $data) {
-		$this->db
-			->where('loc_id', $id)
-			->update('location', $data);
+	public function getLocationByUserId() {
+		return $this->db
+			->get('location')
+			->result_array();
 	}
 	public function getLocationById($id) {
 		return $this->db
@@ -27,9 +23,17 @@ class Mlocation extends CI_Model{
 			->get()
 			->result_array();
 	}
-	public function deleteLocation($id) {
+	public function addLocation($data) {
+		$this->db->insert('location', $data); 
+	}
+	public function updateLocation($id, $data) {
 		$this->db
 			->where('loc_id', $id)
-			->delete('location');
+			->update('location', $data);
+	}
+	public function deleteLocation($id) {
+		// $this->db
+		// 	->where('loc_id', $id)
+		// 	->delete('location');
 	}
 }
