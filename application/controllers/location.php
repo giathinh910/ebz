@@ -126,7 +126,7 @@ class Location extends CI_Controller {
 		foreach ($locations as $key => $location) {
 			$output .= "{";
 			foreach ($location as $key => $value) {
-				$output .= '"'.$key.'":"'.$value.'",';
+				$output .= '"'.$key.'":"'.htmlspecialchars($value, ENT_COMPAT).'",';
 			}
 			$output = rtrim($output, ",");
 			$output .= "},";
