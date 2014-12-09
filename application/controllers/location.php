@@ -16,6 +16,9 @@ class Location extends CI_Controller {
 	ADD
 	 */
 	public function add_location() {
+		if($this->session->userdata('current_user_id') == null) {
+			redirect(base_url('user/login'));
+		}
 		$data = array(
 			'provinces' => $this->Mprovince->getAllProvince(),
 			'categories' => $this->Mcategory->getAllCategory(),
@@ -25,6 +28,9 @@ class Location extends CI_Controller {
 		$this->load->view('front/layout/foot.php');
 	}
 	public function add_location_exec() {
+		if($this->session->userdata('current_user_id') == null) {
+			redirect(base_url('user/login'));
+		}
 		$location = array (
 			"loc_name" => $this->input->post('name'),
 			"loc_address" => $this->input->post('address'),
@@ -44,6 +50,9 @@ class Location extends CI_Controller {
 	VIEW
 	 */
 	public function my_locations() {
+		if($this->session->userdata('current_user_id') == null) {
+			redirect(base_url('user/login'));
+		}
 		$data = array(
 			'locations' => $this->Mlocation->getLocationByUserId(),
 			'successMessage' => $this->session->flashdata('message')
@@ -64,6 +73,9 @@ class Location extends CI_Controller {
 	EDIT / UPDATE
 	 */
 	public function edit_location($id) {
+		if($this->session->userdata('current_user_id') == null) {
+			redirect(base_url('user/login'));
+		}
 		if ($this->session->flashdata('message') != null) {
 			$data = array(
 				'location' => $this->Mlocation->getLocationById($id),
@@ -83,6 +95,9 @@ class Location extends CI_Controller {
 		$this->load->view('front/layout/foot.php');
 	}
 	public function update_location_exec() {
+		if($this->session->userdata('current_user_id') == null) {
+			redirect(base_url('user/login'));
+		}
 		$id = $this->input->post('id');
 		$location = array (
 			"loc_name" => $this->input->post('name'),
@@ -104,6 +119,9 @@ class Location extends CI_Controller {
 	DELETE
 	 */
 	public function delete_location($id) {
+		if($this->session->userdata('current_user_id') == null) {
+			redirect(base_url('user/login'));
+		}
 		$this->Mlocation->deleteLocation($id);
 		$this->session->set_flashdata('message','Đã xóa địa điểm');
 		redirect(base_url('location/my_locations/'.$id));

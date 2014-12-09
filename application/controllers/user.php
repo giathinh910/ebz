@@ -11,6 +11,9 @@ class User extends CI_Controller {
 		$this->login();
 	}
 	public function login() {
+		if($this->session->userdata('current_user_id') != null) {
+			redirect(base_url());
+		}
 		if ($this->session->flashdata('message') != null) {
 			$data = array(
 				'flashMessage' => $this->session->flashdata('message')
@@ -23,6 +26,9 @@ class User extends CI_Controller {
 		$this->load->view('front/layout/foot.php');
 	}
 	public function login_exec() {
+		if($this->session->userdata('current_user_id') != null) {
+			redirect(base_url());
+		}
 		$users = $this->Muser->login(
 			array(
 				"usr_username" => $this->input->post('username'),
