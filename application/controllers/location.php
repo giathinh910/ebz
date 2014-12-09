@@ -32,6 +32,7 @@ class Location extends CI_Controller {
 			redirect(base_url('user/login'));
 		}
 		$location = array (
+			"loc_user_id" => $this->session->userdata('current_user_id'),
 			"loc_name" => $this->input->post('name'),
 			"loc_address" => $this->input->post('address'),
 			"loc_phone" => $this->input->post('phone'),
@@ -54,7 +55,7 @@ class Location extends CI_Controller {
 			redirect(base_url('user/login'));
 		}
 		$data = array(
-			'locations' => $this->Mlocation->getLocationByUserId(),
+			'locations' => $this->Mlocation->getLocationByUserId($this->session->userdata('current_user_id')),
 			'successMessage' => $this->session->flashdata('message')
 		);
 		$this->load->view('front/layout/head.php');
@@ -73,19 +74,20 @@ class Location extends CI_Controller {
 	EDIT / UPDATE
 	 */
 	public function edit_location($id) {
+		$current_user_id = $this->session->userdata('current_user_id');
 		if($this->session->userdata('current_user_id') == null) {
 			redirect(base_url('user/login'));
 		}
 		if ($this->session->flashdata('message') != null) {
 			$data = array(
-				'location' => $this->Mlocation->getLocationById($id),
+				'location' => $this->Mlocation->getLocationByIdAndUser($id, $current_user_id),
 				'provinces' => $this->Mprovince->getAllProvince(),
 				'categories' => $this->Mcategory->getAllCategory(),
 				'successMessage' => $this->session->flashdata('message')
 			);
 		} else {
 			$data = array(
-				'location' => $this->Mlocation->getLocationById($id),
+				'location' => $this->Mlocation->getLocationByIdAndUser($id, $current_user_id),
 				'provinces' => $this->Mprovince->getAllProvince(),
 				'categories' => $this->Mcategory->getAllCategory(),
 			);
@@ -95,11 +97,12 @@ class Location extends CI_Controller {
 		$this->load->view('front/layout/foot.php');
 	}
 	public function update_location_exec() {
+		$current_user_id = $this->session->userdata('current_user_id');
 		if($this->session->userdata('current_user_id') == null) {
 			redirect(base_url('user/login'));
 		}
 		$id = $this->input->post('id');
-		$location = array (
+		$data = array (
 			"loc_name" => $this->input->post('name'),
 			"loc_address" => $this->input->post('address'),
 			"loc_phone" => $this->input->post('phone'),
@@ -111,7 +114,7 @@ class Location extends CI_Controller {
 			"loc_brief" => $this->input->post('brief'),
 			"loc_detail" => $this->input->post('detail')
 		);
-		$this->Mlocation->updateLocation($id, $location);
+		$this->Mlocation->updateLocation($id, $current_user_id, $data);
 		$this->session->set_flashdata('message','Cập nhật thành công');
 		redirect(base_url('location/edit_location/'.$id));
 	}
@@ -119,10 +122,11 @@ class Location extends CI_Controller {
 	DELETE
 	 */
 	public function delete_location($id) {
+		$current_user_id = $this->session->userdata('current_user_id');
 		if($this->session->userdata('current_user_id') == null) {
 			redirect(base_url('user/login'));
 		}
-		$this->Mlocation->deleteLocation($id);
+		$this->Mlocation->deleteLocation($id, $current_user_id);
 		$this->session->set_flashdata('message','Đã xóa địa điểm');
 		redirect(base_url('location/my_locations/'.$id));
 	}

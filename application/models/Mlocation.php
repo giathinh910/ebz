@@ -5,9 +5,11 @@ class Mlocation extends CI_Model{
 		parent::__construct();
 		$this->load->database();
 	}
-	public function getLocationByUserId() {
+	public function getLocationByUserId($id) {
 		return $this->db
 			->join('province', 'province.prv_id = location.loc_province_id')
+			->join('user', 'user.usr_id = location.loc_user_id')
+			->where('usr_id', $id)
 			->get('location')
 			->result_array();
 	}
@@ -16,6 +18,16 @@ class Mlocation extends CI_Model{
 			->where('loc_id', $id)
 			->join('province', 'province.prv_id = location.loc_province_id')
 			->join('category', 'category.ctg_id = location.loc_category_id')
+			->get('location')
+			->result_array();
+	}
+	public function getLocationByIdAndUser($id, $userId) {
+		return $this->db
+			->join('province', 'province.prv_id = location.loc_province_id')
+			->join('category', 'category.ctg_id = location.loc_category_id')
+			->join('user', 'user.usr_id = location.loc_user_id')
+			->where('loc_id', $id)
+			->where('usr_id', $userId)
 			->get('location')
 			->result_array();
 	}
@@ -29,14 +41,16 @@ class Mlocation extends CI_Model{
 	public function addLocation($data) {
 		$this->db->insert('location', $data); 
 	}
-	public function updateLocation($id, $data) {
+	public function updateLocation($id, $userId, $data) {
 		$this->db
 			->where('loc_id', $id)
+			->where('loc_user_id', $userId)
 			->update('location', $data);
 	}
-	public function deleteLocation($id) {
+	public function deleteLocation($id, $userId) {
 		$this->db
 			->where('loc_id', $id)
+			->where('loc_user_id', $userId)
 			->delete('location');
 	}
 }
