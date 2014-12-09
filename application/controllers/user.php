@@ -45,11 +45,11 @@ class User extends CI_Controller {
 		}
 	}
 	public function logout() {
-		if($this->session->userdata('current_user_id') == null) {
-			redirect(base_url());
-		} else {
+		if($this->session->userdata('current_user_id') != null) {
 			$this->session->sess_destroy();
 			redirect(base_url('user/login'));
+		} else {
+			redirect(base_url());
 		}
 	}
 }
