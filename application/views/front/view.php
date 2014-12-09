@@ -44,7 +44,7 @@
 					</div>
 				</div>
 			</div>
-			<?php if ($this->session->userdata('current_user_id') != null): ?>
+			<?php if ($this->session->userdata('current_user_id') != null && $this->session->userdata('current_user_id') == $location[0]['loc_user_id']): ?>
 				<div class="btn-group btn-group-md" role="group" aria-label="Thao tác">
 					<a href="<?php echo base_url('location/edit_location/'.$location[0]['loc_id']) ?>" class="btn btn-default">Sửa</a>
 					<a onclick="return confirm('Địa điểm bị xóa không thể được phục hồi. Bạn chắc chắn muốn xóa?');" href="<?php echo base_url('location/delete_location/'.$location[0]['loc_id']) ?>" class="btn btn-danger">Xóa</a>
