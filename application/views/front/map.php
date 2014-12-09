@@ -1,10 +1,14 @@
 <div id="map" class="gt-home-map"></div>
+
+<div class="container">
+	<div class="jumbotron">
+		<h1>Địa chỉ số EBZ</h1>
+		<p>Tạo địa chỉ của bạn ngay hôm nay hoàn toàn miễn phí.</p>
+		<p><a class="btn btn-primary btn-lg" href="<?php echo base_url('location') ?>" role="button">Tạo ngay</a></p>
+	</div>
+</div>
+
 <script src="//maps.googleapis.com/maps/api/js"></script>
-
-<?php var_dump($this->session->userdata('current_user_id')); ?>
-<?php var_dump($this->session->userdata('current_user_username')); ?>
-<?php var_dump($this->session->userdata('current_user_display_name')); ?>
-
 <script>
 	(function( $ ) {
 

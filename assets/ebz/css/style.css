@@ -17,6 +17,7 @@ body {
 	position: relative;
 	margin-top: -20px;
 	height: 450px;
+	margin-bottom: 50px;
 }
 .gt-single-location-map {
 	height: 350px;
