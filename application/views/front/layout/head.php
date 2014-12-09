@@ -37,12 +37,12 @@
 				<li><a href="<?php echo base_url('location/my_locations') ?>"><i class="fa fa-map-marker"></i> Địa điểm của tôi</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#"><i class="fa fa-unlock"></i> Đăng nhập</a></li>
+				<li><a href="<?php echo base_url('user/login') ?>"><i class="fa fa-unlock"></i> Đăng nhập</a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-user"></i> Thinh Bui<span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="#"><i class="fa fa-gear"></i> Cài đặt</a></li>
-						<li><a href="#"><i class="fa fa-lock"></i> Đăng xuất</a></li>
+						<li><a href="<?php echo base_url('user/logout') ?>"><i class="fa fa-lock"></i> Đăng xuất</a></li>
 					</ul>
 				</li>
 			</ul>

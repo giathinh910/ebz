@@ -23,14 +23,32 @@ class User extends CI_Controller {
 		$this->load->view('front/layout/foot.php');
 	}
 	public function login_exec() {
-		$data = array(
-			"usr_username" => $this->input->post('username'),
-			"usr_password" => md5($this->input->post('password')),
+		$users = $this->Muser->login(
+			array(
+				"usr_username" => $this->input->post('username'),
+				"usr_password" => md5($this->input->post('password')),
+			)
 		);
-		if(sizeof($this->Muser->login($data)) != 0) {
-			echo 'asdasdasd';
+		if(sizeof($users) != 0) {
+			foreach ($users as $key => $user) {
+				$userSession = array(
+					'current_user_id' => $user['usr_id'],
+					'current_user_username' => $user['usr_username'],
+					'current_user_display_name' => $user['usr_display_name']
+				);
+				$this->session->set_userdata($userSession);
+			}
+			redirect(base_url());
 		} else {
 			$this->session->set_flashdata('message','Tên đăng nhập hoặc mật khẩu sai');
+			redirect(base_url('user/login'));
+		}
+	}
+	public function logout() {
+		if($this->session->userdata('current_user_id') == null) {
+			redirect(base_url());
+		} else {
+			$this->session->sess_destroy();
 			redirect(base_url('user/login'));
 		}
 	}

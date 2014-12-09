@@ -1,6 +1,9 @@
 <div id="map" class="gt-home-map"></div>
 <script src="//maps.googleapis.com/maps/api/js"></script>
 
+<?php var_dump($this->session->userdata('current_user_username')); ?>
+<?php var_dump($this->session->userdata('current_user_display_name')); ?>
+
 <script>
 	(function( $ ) {
 
