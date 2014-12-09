@@ -135,25 +135,14 @@ class Location extends CI_Controller {
 	 */
 	public function ajax_get_location($option) {
 		$locations = "";
-		$output = "";
 		switch ($option) {
 			case 'all':
-				$locations = $this->Mlocation->getLocationWithSelectedField('loc_id, loc_name, loc_address, loc_coordination, loc_icon, loc_brief');
+				$locations = $this->Mlocation->getLocationWithSelectedField('*');
 				break;
-			
 			default:
 				# code...
 				break;
 		}
-		foreach ($locations as $key => $location) {
-			$output .= "{";
-			foreach ($location as $key => $value) {
-				$output .= '"'.$key.'":"'.htmlspecialchars($value, ENT_COMPAT).'",';
-			}
-			$output = rtrim($output, ",");
-			$output .= "},";
-		}
-		$output = rtrim($output, ",");
-		echo '['.$output.']';
+		echo json_encode($locations);
 	}
 }
