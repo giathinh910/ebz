@@ -5,10 +5,13 @@ class Muser extends CI_Model{
 		parent::__construct();
 		$this->load->database();
 	}
-	public function login($data) {
+	public function getUserWhere($data) {
 		return $this->db
 			->where($data)
 			->get('user')
 			->result_array();
+	}
+	public function createUser($data) {
+		return $this->db->insert('user', $data);
 	}
 }

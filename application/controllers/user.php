@@ -10,6 +10,9 @@ class User extends CI_Controller {
 	public function index() {
 		$this->login();
 	}
+	/**
+	Login
+	 */
 	public function login() {
 		if($this->session->userdata('current_user_id') != null) {
 			redirect(base_url());
@@ -29,7 +32,7 @@ class User extends CI_Controller {
 		if($this->session->userdata('current_user_id') != null) {
 			redirect(base_url());
 		}
-		$users = $this->Muser->login(
+		$users = $this->Muser->getUserWhere(
 			array(
 				"usr_username" => $this->input->post('username'),
 				"usr_password" => md5($this->input->post('password')),
@@ -50,6 +53,53 @@ class User extends CI_Controller {
 			redirect(base_url('user/login'));
 		}
 	}
+	/**
+	 Sign up
+	 */
+	public function signup() {
+		if($this->session->userdata('current_user_id') != null) {
+			redirect(base_url());
+		}
+		if ($this->session->flashdata('message') != null) {
+			$data = array(
+				'flashMessage' => $this->session->flashdata('message')
+			);
+		} else {
+			$data = "";
+		}
+		$this->load->view('front/layout/head.php');
+		$this->load->view('front/signup.php', $data);
+		$this->load->view('front/layout/foot.php');
+	}
+	public function signup_exec() {
+		if($this->session->userdata('current_user_id') != null) {
+			redirect(base_url());
+		}
+		$post = array(
+			'usr_display_name' => $this->input->post('display_name'),
+			'usr_username' => $this->input->post('username'),
+			'usr_password' => $this->input->post('password'),
+			'usr_email' => $this->input->post('username'),
+		);
+		if (!empty($this->Muser->getUserWhere(array('usr_username' => $post['usr_username'])))) {
+			$this->session->set_flashdata('message','Tên đăng nhập đã tồn tại');
+			redirect(base_url('user/signup'));
+		} elseif (strcmp($post['usr_password'][0], $post['usr_password'][1]) !== 0) {
+			$this->session->set_flashdata('message','Hai mật khẩu không khớp');
+			redirect(base_url('user/signup'));
+		} else {
+			$data = array(
+				'usr_display_name' => $this->input->post('display_name'),
+				'usr_username' => $this->input->post('username'),
+				'usr_password' => md5($this->input->post('password')[0]),
+				'usr_email' => $this->input->post('email'),
+			);
+			echo $this->Muser->createUser($data);
+		}
+	}
+	/**
+	 Log out
+	 */
 	public function logout() {
 		if($this->session->userdata('current_user_id') != null) {
 			$this->session->sess_destroy();

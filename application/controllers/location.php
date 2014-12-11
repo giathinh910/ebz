@@ -6,6 +6,7 @@ class Location extends CI_Controller {
 		$this->load->helper(array('html','url','form'));
 		$this->load->library(array('pagination','form_validation','session'));
 		$this->load->Model(array('Mlocation','Mprovince', 'Mcategory'));
+		date_default_timezone_set("Asia/Bangkok");
 	}
 	public function index() {
 		$data = array(
