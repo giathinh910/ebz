@@ -6,6 +6,7 @@
 	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 	<!-- bootstrap -->
 	<?php echo link_tag('assets/ebz/css/bootstrap.min.css'); ?>
+	<?php echo link_tag('assets/ebz/css/site.min.css'); ?>
 	<!-- fontawesome -->
 	<?php echo link_tag('assets/ebz/css/font-awesome.min.css'); ?>
 	<!-- custom stylesheet -->
@@ -17,7 +18,7 @@
 
 <body>
 
-<nav id="gt-header" class="navbar navbar-inverse" role="navigation">
+<nav id="gt-header" class="navbar navbar-default" role="navigation">
 	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
@@ -41,8 +42,7 @@
 				<?php
 					}
 				?>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
+
 				<?php
 					if($this->session->userdata('current_user_id') != null) {
 				?>
@@ -61,6 +61,7 @@
 					}
 				?>
 			</ul>
+			<form class="navbar-form navbar-right" role="search"><div class="form-search search-only"><i class="search-icon glyphicon glyphicon-search"></i> <input class="form-control search-query"></div></form>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container -->
 </nav>

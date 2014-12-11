@@ -1,30 +1,50 @@
 <div id="map" class="gt-home-map"></div>
 
 <div class="container">
-	<div class="row">
-		<div class="jumbotron">
-			<h1>Địa chỉ số EBZ</h1>
-			<p>Tạo địa chỉ của bạn ngay hôm nay hoàn toàn miễn phí.</p>
-			<p><a class="btn btn-primary btn-lg" href="<?php echo base_url('location') ?>" role="button">Tạo ngay</a></p>
-		</div>
+	<div class="pricing">
+		<ul>
+			<li class="unit price-success">
+				<div class="price-title">
+					<h3>Đăng ký miễn phí</h3>
+					<p>Không giới hạn tài khoản trên một thành viên</p>
+				</div>
+			</li>
+			<li class="unit price-primary active">
+				<div class="price-title">
+					<h3>Miễn phí</h3>
+					<p>và sẽ luôn như vậy</p>
+				</div>
+				<div class="price-foot">
+					<a href="<?php echo base_url('location/add_location'); ?>" class="btn btn-primary">Tạo tài khoản ngay</a>
+				</div>
+			</li>
+			<li class="unit price-warning">
+				<div class="price-title">
+					<h3>Tạo địa điểm</h3>
+					<p>Không giới hạn số lượng địa điểm</p>
+				</div>
+			</li>
+		</ul>
 	</div>
 </div>
 
 <div class="container">
+	<h2>Địa điểm mới</h2>
 	<div class="row">
-		<h2>Địa điểm mới</h2>
 		<?php foreach ($categories as $key => $category): ?>
-			<div class="list-group col-sm-6">
-				<p class="list-group-item active">
-					<?php echo $category['ctg_name'] ?>
-				</p>
-				<?php $i = 0; ?>
-				<?php foreach ($locations as $key => $location): ?>
-					<?php if ($location['loc_category_id'] == $category['ctg_id'] && $i <5): ?>
-						<a href="<?php echo base_url('location/view_location/'.$location['loc_id']) ?>" class="list-group-item"><?php echo $location['loc_name'] ?></a>
-						<?php $i++; ?>
-					<?php endif ?>
-				<?php endforeach ?>
+			<div class="col-sm-6">
+				<div class="list-group">
+					<a href="#<?php echo $category['ctg_name']; ?>" class="list-group-item list-group-item-primary">
+						<?php echo $category['ctg_name'] ?>
+					</a>
+					<?php $i = 0; ?>
+					<?php foreach ($locations as $key => $location): ?>
+						<?php if ($location['loc_category_id'] == $category['ctg_id'] && $i <5): ?>
+							<a href="<?php echo base_url('location/view_location/'.$location['loc_id']) ?>" class="list-group-item"><?php echo $location['loc_name'] ?></a>
+							<?php $i++; ?>
+						<?php endif ?>
+					<?php endforeach ?>
+				</div>
 			</div>
 		<?php endforeach ?>
 	</div>

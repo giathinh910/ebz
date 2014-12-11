@@ -1,7 +1,7 @@
 /* General
 ------------------------------------*/
 body {
-	background: #fafafa;
+	background: #f7f7f7;
 }
 .navbar {
 	border-radius: 0;
@@ -47,4 +47,10 @@ body {
 .gt-catalog h5:first-child,
 .gt-catalog h6:first-child {
 	margin-top: 0;
+}
+
+@media (min-width: 768px) {
+	.pricing .unit {
+		width: 35.2%;
+	}
 }

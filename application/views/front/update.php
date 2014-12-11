@@ -6,7 +6,7 @@
 	</div>
 <?php else: ?>
 	<div class="container">
-		<ol class="breadcrumb">
+		<ol class="breadcrumb breadcrumb-arrow">
 			<li><a href="<?php echo base_url() ?>">Trang chủ</a></li>
 			<li><a href="<?php echo base_url('location') ?>">Địa điểm</a></li>
 			<li class="active"><a href="<?php echo base_url('location/view_location/'.$location[0]['loc_id']) ?>"><?php echo $location[0]['loc_name']; ?></a></li>

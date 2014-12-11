@@ -4,12 +4,10 @@
 	}
 ?>
 <div class="container">
-	<ol class="breadcrumb">
+	<ol class="breadcrumb breadcrumb-arrow">
 		<li><a href="<?php echo base_url() ?>">Trang chủ</a></li>
 		<li><a href="<?php echo base_url('location') ?>">Địa điểm</a></li>
-		<li class="active">
-			<?php echo $location[0]['loc_name']; ?>
-		</li>
+		<li class="active"><a href="#"><?php echo $location[0]['loc_name']; ?></a></li>
 	</ol>
 	<div class="row">
 		<div class="gt-contact-info col-xs-12 col-sm-3">

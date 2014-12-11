@@ -1,5 +1,5 @@
 <div class="container">
-	<ol class="breadcrumb">
+	<ol class="breadcrumb breadcrumb-arrow">
 		<li><a href="<?php echo base_url() ?>">Trang chủ</a></li>
 		<li><a href="<?php echo base_url('location') ?>">Địa điểm của bạn</a></li>
 	</ol>
