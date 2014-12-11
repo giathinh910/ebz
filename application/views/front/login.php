@@ -26,7 +26,7 @@
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-3 col-sm-9">
-						Chưa có tài khoản? <a href="#">Đăng ký ngay.</a>
+						Chưa có tài khoản? <a href="<?php echo base_url('user/signup') ?>">Đăng ký ngay.</a>
 					</div>
 				</div>
 				<div class="form-group">

@@ -37,6 +37,7 @@ class Mlocation extends CI_Model{
 			->join('category', 'category.ctg_id = location.loc_category_id')
 			->join('user', 'user.usr_id = location.loc_user_id')
 			->from('location')
+			->order_by('loc_id', 'desc')
 			->get()
 			->result_array();
 	}

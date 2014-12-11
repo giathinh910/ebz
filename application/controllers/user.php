@@ -94,7 +94,9 @@ class User extends CI_Controller {
 				'usr_password' => md5($this->input->post('password')[0]),
 				'usr_email' => $this->input->post('email'),
 			);
-			echo $this->Muser->createUser($data);
+			$this->Muser->createUser($data);
+			$this->session->set_flashdata('message','Tài khoản đã được tạo, bạn có thể đăng nhập ngay');
+			redirect(base_url('user/login'));
 		}
 	}
 	/**
