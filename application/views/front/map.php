@@ -1,54 +1,81 @@
 <div id="map" class="gt-home-map"></div>
 
+
+<?php if ($this->session->userdata('current_user_id') == null): ?>
+	<div class="container">
+		<div class="pricing">
+			<ul>
+				<li class="unit price-success">
+					<div class="price-title">
+						<h3>Đăng ký</h3>
+						<p>Không giới hạn tài khoản trên một người</p>
+					</div>
+				</li>
+				<li class="unit price-primary active">
+					<div class="price-title">
+						<h3>Miễn phí</h3>
+						<p>và sẽ luôn như vậy</p>
+					</div>
+					<div class="price-foot">
+						<a href="<?php echo base_url('location/user/sign_up'); ?>" class="btn btn-primary">Tạo tài khoản ngay</a>
+					</div>
+				</li>
+				<li class="unit price-warning">
+					<div class="price-title">
+						<h3>Tạo địa điểm</h3>
+						<p>Không giới hạn số lượng</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+<?php else: ?>
+	<div class="container" style="text-align: center">
+		<h2 class="gt-heading">Địa điểm mới nhất</h2>
+	</div>
+<?php endif ?>
+
 <div class="container">
-	<div class="pricing">
-		<ul>
-			<li class="unit price-success">
-				<div class="price-title">
-					<h3>Đăng ký miễn phí</h3>
-					<p>Không giới hạn tài khoản trên một thành viên</p>
-				</div>
-			</li>
-			<li class="unit price-primary active">
-				<div class="price-title">
-					<h3>Miễn phí</h3>
-					<p>và sẽ luôn như vậy</p>
-				</div>
-				<div class="price-foot">
-					<a href="<?php echo base_url('location/add_location'); ?>" class="btn btn-primary">Tạo tài khoản ngay</a>
-				</div>
-			</li>
-			<li class="unit price-warning">
-				<div class="price-title">
-					<h3>Tạo địa điểm</h3>
-					<p>Không giới hạn số lượng địa điểm</p>
-				</div>
-			</li>
-		</ul>
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="timeline" style="margin-bottom: 50px;">
+				<dl>
+					<?php
+						$count = 0;
+						$class = '';
+					?>
+					<?php foreach ($locations as $key => $location): ?>
+						<?php $count ++; ?>
+						<?php
+							if ($count % 2 != 0):
+								$class='pos-left';
+							else:
+								$class='pos-right';
+							endif
+						?>
+						<?php if ($count <= 10): ?>
+							<dd class="<?php echo $class ?> clearfix">
+								<div class="circ"></div>
+								<div class="time"><?php echo $count ?></div>
+								<div class="events">
+									<div class="pull-left"><img class="events-object img-rounded" src="<?php echo $location['loc_icon']; ?>"></div>
+									<div class="events-body">
+										<h4 class="events-heading"><?php echo $location['loc_name']; ?></h4>
+										<p><?php echo $location['loc_brief'] ?></p>
+										<a href="<?php echo base_url('location/view_location/'.$location['loc_id']) ?>" class="btn btn-primary">Chi tiết</a>
+										<br>
+										<br>
+									</div>
+								</div>
+							</dd>
+						<?php endif ?>
+					<?php endforeach ?>
+			</div>
+		</div>
 	</div>
 </div>
 
-<div class="container">
-	<h2>Địa điểm mới</h2>
-	<div class="row">
-		<?php foreach ($categories as $key => $category): ?>
-			<div class="col-sm-6">
-				<div class="list-group">
-					<a href="#<?php echo $category['ctg_name']; ?>" class="list-group-item list-group-item-primary">
-						<?php echo $category['ctg_name'] ?>
-					</a>
-					<?php $i = 0; ?>
-					<?php foreach ($locations as $key => $location): ?>
-						<?php if ($location['loc_category_id'] == $category['ctg_id'] && $i <5): ?>
-							<a href="<?php echo base_url('location/view_location/'.$location['loc_id']) ?>" class="list-group-item"><?php echo $location['loc_name'] ?></a>
-							<?php $i++; ?>
-						<?php endif ?>
-					<?php endforeach ?>
-				</div>
-			</div>
-		<?php endforeach ?>
-	</div>
-</div>
+
 
 <script src="//maps.googleapis.com/maps/api/js"></script>
 <script>
