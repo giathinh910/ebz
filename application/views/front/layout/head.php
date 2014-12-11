@@ -28,7 +28,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 			</button>
-		<a class="navbar-brand" href="<?php echo base_url() ?>" style="color: #fff"><i class="fa fa-map-marker"></i> EBZ digital location</a>
+		<a class="navbar-brand" href="<?php echo base_url() ?>" style="color: #fff"><i class="fa fa-map-marker gt-logo"></i> EBZ <small>digital location</small></a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -61,7 +61,11 @@
 					}
 				?>
 			</ul>
-			<form class="navbar-form navbar-right" role="search"><div class="form-search search-only"><i class="search-icon glyphicon glyphicon-search"></i> <input class="form-control search-query"></div></form>
+			<form class="navbar-form navbar-right" role="search" action="<?php echo base_url('?search=') ?>" method="GET">
+				<div class="form-search search-only">
+					<i class="search-icon glyphicon glyphicon-search"></i>
+					<input type="text" class="form-control search-query" placeholder="Tìm địa điểm"></div>
+			</form>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container -->
 </nav>

@@ -73,3 +73,9 @@ body {
 .timeline .pos-right .time {
 	margin-left: -200px !important;
 }
+
+.gt-logo {
+	color: rgb(232, 101, 27);
+	font-size: 30px;
+	line-height: 10px;
+}
