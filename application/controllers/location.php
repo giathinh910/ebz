@@ -8,8 +8,12 @@ class Location extends CI_Controller {
 		$this->load->Model(array('Mlocation','Mprovince', 'Mcategory'));
 	}
 	public function index() {
+		$data = array(
+			'categories' => $this->Mcategory->getAllCategory(),
+			'locations' => $this->Mlocation->getLocationWithSelectedField('*')
+		);
 		$this->load->view('front/layout/head.php');
-		$this->load->view('front/map.php');
+		$this->load->view('front/map.php', $data);
 		$this->load->view('front/layout/foot.php');
 	}
 	/**
