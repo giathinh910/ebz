@@ -61,10 +61,10 @@
 					}
 				?>
 			</ul>
-			<form class="navbar-form navbar-right" role="search" action="<?php echo base_url('?search=') ?>" method="GET">
+			<form class="navbar-form navbar-right" role="search" action="<?php echo base_url('location/search') ?>" method="POST">
 				<div class="form-search search-only">
 					<i class="search-icon glyphicon glyphicon-search"></i>
-					<input type="text" class="form-control search-query" placeholder="Tìm địa điểm"></div>
+					<input type="text" class="form-control search-query" placeholder="Tìm địa điểm" name="search"></div>
 			</form>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container -->

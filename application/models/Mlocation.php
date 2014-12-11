@@ -56,4 +56,12 @@ class Mlocation extends CI_Model{
 			->where('loc_user_id', $userId)
 			->delete('location');
 	}
+	public function searchLocation($query) {
+		return $this->db
+			->like('loc_name', $query)
+			->or_like('loc_brief', $query)
+			->or_like('loc_detail', $query)
+			->get('location')
+			->result_array();
+	}
 }

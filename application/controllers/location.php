@@ -136,6 +136,18 @@ class Location extends CI_Controller {
 		redirect(base_url('location/my_locations/'.$id));
 	}
 	/**
+	SEARCH
+	 */
+	public function search() {
+		$queryString = $this->input->post('search');
+		$data = array(
+			'results' => $this->Mlocation->searchLocation($queryString),
+		);
+		$this->load->view('front/layout/head.php');
+		$this->load->view('front/search.php', $data);
+		$this->load->view('front/layout/foot.php');
+	}
+	/**
 	JSON
 	 */
 	public function ajax_get_location($option) {
