@@ -61,3 +61,15 @@ body {
 	font-size: 30px;
 	display: inline-block
 }
+
+.timeline .time {
+	width: 200px !important;
+}
+
+.timeline .pos-left {
+	
+}
+
+.timeline .pos-right .time {
+	margin-left: -200px !important;
+}

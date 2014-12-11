@@ -56,7 +56,7 @@
 						<?php if ($count <= 10): ?>
 							<dd class="<?php echo $class ?> clearfix">
 								<div class="circ"></div>
-								<div class="time"><?php echo $count ?></div>
+								<div class="time"><?php echo $location['usr_display_name'] ?></div>
 								<div class="events">
 									<div class="pull-left"><img class="events-object img-rounded" src="<?php echo $location['loc_icon']; ?>"></div>
 									<div class="events-body">

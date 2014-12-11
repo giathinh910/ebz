@@ -34,6 +34,8 @@ class Mlocation extends CI_Model{
 	public function getLocationWithSelectedField($fields) {
 		return $this->db
 			->select($fields)
+			->join('category', 'category.ctg_id = location.loc_category_id')
+			->join('user', 'user.usr_id = location.loc_user_id')
 			->from('location')
 			->get()
 			->result_array();
