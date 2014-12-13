@@ -29,4 +29,9 @@ class Muser extends CI_Model{
 			->where('usr_id', $id)
 			->delete('user');
 	}
+	public function deleteLocationByUser($id) {
+		$this->db
+			->where('loc_user_id', $id)
+			->delete('location');
+	}
 }

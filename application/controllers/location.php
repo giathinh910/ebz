@@ -166,6 +166,9 @@ class Location extends CI_Controller {
 	ADMIN all location
 	 */
 	public function all() {
+		if($this->session->userdata('current_user_id') == null || $this->session->userdata('current_user_permission') != 1) {
+			redirect(base_url());
+		}
 		$data = array(
 			'pageTitle' => 'Danh sách',
 			'pageGroupTitle' => 'Địa điểm',

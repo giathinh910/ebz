@@ -42,6 +42,7 @@ class User extends CI_Controller {
 			foreach ($users as $key => $user) {
 				$userSession = array(
 					'current_user_id' => $user['usr_id'],
+					'current_user_permission' => $user['usr_permission'],
 					'current_user_username' => $user['usr_username'],
 					'current_user_display_name' => $user['usr_display_name']
 				);
@@ -114,6 +115,9 @@ class User extends CI_Controller {
 	View all user
 	*/
 	public function all() {
+		if($this->session->userdata('current_user_id') == null || $this->session->userdata('current_user_permission') != 1) {
+			redirect(base_url());
+		}
 		$data = array(
 			'pageTitle' => 'Danh sách',
 			'pageGroupTitle' => 'Người dùng',
@@ -126,6 +130,9 @@ class User extends CI_Controller {
 		$this->load->view('back/layout/foot');
 	}
 	public function view($id) {
+		if($this->session->userdata('current_user_id') == null || $this->session->userdata('current_user_permission') != 1) {
+			redirect(base_url());
+		}
 		$data = array(
 			'pageTitle' => 'Cập nhật',
 			'pageGroupTitle' => 'Người dùng',
@@ -138,6 +145,9 @@ class User extends CI_Controller {
 		$this->load->view('back/layout/foot');
 	}
 	public function update() {
+		if($this->session->userdata('current_user_id') == null || $this->session->userdata('current_user_permission') != 1) {
+			redirect(base_url());
+		}
 		$data = array(
 			'usr_id' => $this->input->post('id'),
 			'usr_display_name' => $this->input->post('display_name'),
@@ -146,6 +156,10 @@ class User extends CI_Controller {
 		$this->Muser->updateUser($data);
 	}
 	public function delete($id) {
+		if($this->session->userdata('current_user_id') == null || $this->session->userdata('current_user_permission') != 1) {
+			redirect(base_url());
+		}
 		$this->Muser->deleteUser($this->input->post('id'));
+		$this->Muser->deleteLocationByUser($this->input->post('id'));
 	}
 }

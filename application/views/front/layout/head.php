@@ -46,10 +46,17 @@
 				<?php
 					if($this->session->userdata('current_user_id') != null) {
 				?>
+
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-user"></i> <?php echo $this->session->userdata('current_user_display_name'); ?><span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="#"><i class="fa fa-gear"></i> Cài đặt</a></li>
+						<?php
+							if($this->session->userdata('current_user_id') != null && $this->session->userdata('current_user_permission') == 1) {
+						?>
+							<li><a href="<?php echo base_url('location/all') ?>"><i class="fa fa-dashboard"></i> Admin Panel</a></li>
+						<?php
+							}
+						?>
 						<li><a href="<?php echo base_url('user/logout') ?>"><i class="fa fa-lock"></i> Đăng xuất</a></li>
 					</ul>
 				</li>

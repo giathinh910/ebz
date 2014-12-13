@@ -2,7 +2,7 @@
 <html>
 	<head>
 	<meta charset="UTF-8">
-	<title>HRM</title>
+	<title>EBZ</title>
 	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 	<!-- bootstrap 3.0.2 -->
 	<?php echo link_tag('assets/admin/css/bootstrap.min.css'); ?>
@@ -39,4 +39,4 @@
 
 	</head>
 
-<body class="skin-blue">
+<body class="skin-black">

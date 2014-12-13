@@ -1,8 +1,8 @@
 <!-- header logo: style can be found in header.less -->
 <header class="header">
-	<a href="index.html" class="logo">
+	<a href="<?php echo base_url() ?>" class="logo">
 		<!-- Add the class icon to your logo image or logo icon to add the margining -->
-		HRM
+		EBZ
 	</a>
 	<!-- Header Navbar: style can be found in header.less -->
 	<nav class="navbar navbar-static-top" role="navigation">
@@ -19,23 +19,19 @@
 				<li class="dropdown user user-menu">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="glyphicon glyphicon-user"></i>
-						<span>Thinh Bui <i class="caret"></i></span>
+						<span><?php echo $this->session->userdata('current_user_display_name') ?> <i class="caret"></i></span>
 					</a>
 					<ul class="dropdown-menu">
 						<!-- User image -->
 						<li class="user-header bg-light-blue">
-							<img src="img/avatar3.png" class="img-circle" alt="User Image" />
 							<p>
-								Thinh Bui - Admin
+								<?php echo $this->session->userdata('current_user_display_name') ?>
 							</p>
 						</li>
 						<!-- Menu Footer-->
 						<li class="user-footer">
-							<div class="pull-left">
-								<a href="#" class="btn btn-default btn-flat">Profile</a>
-							</div>
 							<div class="pull-right">
-								<a href="#" class="btn btn-default btn-flat">Sign out</a>
+								<a href="<?php echo base_url('user/logout') ?>" class="btn btn-default btn-flat">Đăng xuất</a>
 							</div>
 						</li>
 					</ul>

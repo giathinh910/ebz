@@ -22,7 +22,7 @@
 				
 			</div><!-- /.box-header -->
 			<div class="box-body table-responsive">
-				<table class="table" id="staffs-table">
+				<table class="table data-table" id="staffs-table">
 					<thead>
 						<tr>
 							<th>Mã số</th>

@@ -20,16 +20,15 @@
 	<script src="<?php echo base_url('assets/admin/js/plugins/jqueryKnob/jquery.knob.js');?>"></script>
 	<!-- daterangepicker -->
 	<script src="<?php echo base_url('assets/admin/js/plugins/daterangepicker/daterangepicker.js');?>"></script>
-	<!-- Bootstrap WYSIHTML5 -->
-	<script src="<?php echo base_url('assets/admin/js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js');?>"></script>
 	<!-- iCheck -->
 	<script src="<?php echo base_url('assets/admin/js/plugins/iCheck/icheck.min.js');?>"></script>
+	<!-- Datatable -->
+	<script src="<?php echo base_url('assets/admin/js/plugins/datatables/jquery.dataTables.js');?>"></script>
+	<script src="<?php echo base_url('assets/admin/js/plugins/datatables/dataTables.bootstrap.js');?>"></script>
 	<!-- AdminLTE App -->
 	<script src="<?php echo base_url('assets/admin/js/AdminLTE/app.js');?>"></script>
-	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-	<script src="<?php echo base_url('assets/admin/js/AdminLTE/dashboard.js');?>"></script>
-	<!-- AdminLTE for demo purposes -->
-	<script src="<?php echo base_url('assets/admin/js/AdminLTE/demo.js');?>"></script>
+	<!-- Custom js -->
+	<script src="<?php echo base_url('assets/admin/js/custom.js');?>"></script>
 
 	</body>
 </html>
