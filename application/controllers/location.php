@@ -162,4 +162,19 @@ class Location extends CI_Controller {
 		}
 		echo json_encode($locations);
 	}
+	/**
+	ADMIN all location
+	 */
+	public function all() {
+		$data = array(
+			'pageTitle' => 'Danh sách',
+			'pageGroupTitle' => 'Địa điểm',
+			'locations' => $this->Mlocation->getLocationWithSelectedField('*')
+		);
+		$this->load->view('back/layout/head');
+		$this->load->view('back/layout/header');
+		$this->load->view('back/layout/sidebar');
+		$this->load->view('back/location/view', $data);
+		$this->load->view('back/layout/foot');
+	}
 }

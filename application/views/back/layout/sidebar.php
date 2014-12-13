@@ -14,21 +14,15 @@
 		<!-- /.search form -->
 		<!-- sidebar menu: : style can be found in sidebar.less -->
 		<ul class="sidebar-menu">
-			<li class="active">
-				<a href="index.html">
-					<i class="fa fa-dashboard"></i> <span>Trang chủ</span>
-				</a>
-			</li>
 			<li class="treeview active">
 				<a href="#">
-					<i class="fa fa-calendar"></i>
-					<span>Chấm công</span>
+					<i class="fa fa-wrench"></i>
+					<span>Quản lý</span>
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="<?php echo base_url('attendance/view_attendance') ?>"><i class="fa fa-angle-double-right"></i> Bảng công</a></li>
-					<li><a href="<?php echo base_url('attendance/add_attendance_table') ?>"><i class="fa fa-angle-double-right"></i> Tạo bảng chấm công</a></li>
-					<li><a href=""><i class="fa fa-angle-double-right"></i> Xuất báo cáo</a></li>
+					<li><a href="<?php echo base_url('user/all') ?>"><i class="fa fa-angle-double-right"></i> Người dùng</a></li>
+					<li><a href="<?php echo base_url('location/all') ?>"><i class="fa fa-angle-double-right"></i> Địa điểm</a></li>
 				</ul>
 			</li>
 		</ul>
