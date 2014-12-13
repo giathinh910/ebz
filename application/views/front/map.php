@@ -38,7 +38,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-			<div class="timeline" style="margin-bottom: 50px;">
+			<div class="timeline">
 				<dl>
 					<?php
 						$count = 0;

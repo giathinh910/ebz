@@ -79,7 +79,7 @@ class User extends CI_Controller {
 			'usr_display_name' => $this->input->post('display_name'),
 			'usr_username' => $this->input->post('username'),
 			'usr_password' => $this->input->post('password'),
-			'usr_email' => $this->input->post('username'),
+			'usr_email' => $this->input->post('email'),
 		);
 		if (!empty($this->Muser->getUserWhere(array('usr_username' => $post['usr_username'])))) {
 			$this->session->set_flashdata('message','Tên đăng nhập đã tồn tại');
@@ -109,5 +109,43 @@ class User extends CI_Controller {
 		} else {
 			redirect(base_url());
 		}
+	}
+	/**
+	View all user
+	*/
+	public function all() {
+		$data = array(
+			'pageTitle' => 'Danh sách',
+			'pageGroupTitle' => 'Người dùng',
+			'users' => $this->Muser->getAllUser(),
+		);
+		$this->load->view('back/layout/head');
+		$this->load->view('back/layout/header');
+		$this->load->view('back/layout/sidebar');
+		$this->load->view('back/user/all', $data);
+		$this->load->view('back/layout/foot');
+	}
+	public function view($id) {
+		$data = array(
+			'pageTitle' => 'Cập nhật',
+			'pageGroupTitle' => 'Người dùng',
+			'users' => $this->Muser->getUserWhere(array('usr_id' => $id)),
+		);
+		$this->load->view('back/layout/head');
+		$this->load->view('back/layout/header');
+		$this->load->view('back/layout/sidebar');
+		$this->load->view('back/user/view', $data);
+		$this->load->view('back/layout/foot');
+	}
+	public function update() {
+		$data = array(
+			'usr_id' => $this->input->post('id'),
+			'usr_display_name' => $this->input->post('display_name'),
+			'usr_username' => $this->input->post('username'),
+		);
+		$this->Muser->updateUser($data);
+	}
+	public function delete($id) {
+		$this->Muser->deleteUser($this->input->post('id'));
 	}
 }
