@@ -96,7 +96,7 @@ class User extends CI_Controller {
 				'usr_email' => $this->input->post('email'),
 			);
 			$this->Muser->createUser($data);
-			$this->session->set_flashdata('message','Tài khoản đã được tạo, bạn có thể đăng nhập ngay');
+			$this->session->set_flashdata('message','Tạo tài khoản <strong>THÀNH CÔNG</strong>, bạn có thể đăng nhập ngay');
 			redirect(base_url('user/login'));
 		}
 	}

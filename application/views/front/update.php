@@ -66,9 +66,10 @@
 				</div>
 				<div class="form-group">
 					<label for="">Hình đại diện</label>
-					<input type="text" class="form-control" id="" placeholder="" name="icon" value="<?php if (isset($location)) echo htmlspecialchars($location[0]['loc_icon']) ?>">
+					<input type="text" class="form-control" id="icon-receiver" placeholder="" name="icon" value="<?php if (isset($location)) echo htmlspecialchars($location[0]['loc_icon']) ?>">
+					<p style="font-size: 0.8em; font-style: italic">Chọn icon có sẵn bằng nút bên dưới hoặc dán link icon/logo của bạn vào</p>
 				</div>
-				<button type="submit" class="btn btn-success">Cập nhật</button>
+				<button type="button" id="icon-picker" class="btn btn-info" data-toggle="modal" data-target="#icon-list">Danh sách icon</button>
 			</div>
 			<div class="col-xs-12 col-sm-8">
 				<div class="form-group">
@@ -80,14 +81,49 @@
 					<label for="">Trang catalog</label>
 					<textarea name="detail" id="detail" cols="30" rows="10" class="form-control" placeholder="Viết trang catalog của bạn tại đây"><?php if (isset($location)) echo $location[0]['loc_detail'] ?></textarea>
 				</div>
+				<button type="submit" class="btn btn-success btn-lg pull-right">Cập nhật</button>
 			</div>
 		</form>
-
-		<script src="<?php echo base_url('assets/ebz/plugins/ckeditor/ckeditor.js');?>"></script>
-		<script>
-			CKEDITOR.replace( 'detail', {
-				customConfig: 'config_full.js'
-			});
-		</script>
 	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="icon-list" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title" id="myModalLabel">Chọn biểu tượng</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<?php
+							for ($i=1; $i <=200 ; $i++) { 
+						?>
+						<div class="col-xs-4 col-sm-2">
+							<div class="img-container">
+								<img src="<?php echo base_url('assets/ebz/images/icon/'.$i.'.png') ?>" alt="">
+							</div>
+						</div>
+						<?php
+							}
+						?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="<?php echo base_url('assets/ebz/plugins/ckeditor/ckeditor.js');?>"></script>
+	<script>
+		CKEDITOR.replace( 'detail', {
+			customConfig: 'config_full.js'
+		});
+	</script>
+	<script>
+		jQuery(document).ready(function($) {
+			$('.img-container').on('click', function() {
+				var img_src = $(this).find('img').attr('src');
+				$('input#icon-receiver').val(img_src);
+				$('#icon-list').modal('hide');
+			})
+		});
+	</script>
 <?php endif ?>

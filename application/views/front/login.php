@@ -3,9 +3,8 @@
 		<?php
 			if (!empty($flashMessage)) {
 		?>
-			<div class="alert alert-danger alert-dismissible col-xs-12 col-sm-6 col-sm-offset-3" role="alert">
-				<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-				<i class="fa fa-times"></i>	<?php echo $flashMessage ?>
+			<div class="alert alert-info alert-dismissible col-xs-12 col-sm-6 col-sm-offset-3" role="alert">
+				<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><?php echo $flashMessage ?>
 			</div>
 		<?php
 			}

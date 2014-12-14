@@ -1,7 +1,7 @@
 /* General
 ------------------------------------*/
 body {
-	background: #f5f5f5;
+	background: #F0F0D6;
 	min-height: 768px;
 }
 .navbar {
@@ -11,7 +11,9 @@ body {
 .breadcrumb {
 	background: #f0f0f0 !important;
 }
-
+label {
+	white-space: nowrap;
+}
 /* Sections 
 ------------------------------------*/
 .gt-home-map {
@@ -104,4 +106,17 @@ body {
 }
 .footer a {
 	color: #eee !important;
+}
+
+.modal#icon-list .img-container {
+	padding: 7px 0;
+	cursor: pointer;
+	border: 1px solid transparent;
+	text-align: center;
+}
+.modal#icon-list .img-container:hover {
+	border-color: #37bc9b;
+}
+.modal#icon-list img {
+	margin: 0 auto;
 }
