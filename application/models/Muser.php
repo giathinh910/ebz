@@ -13,6 +13,7 @@ class Muser extends CI_Model{
 	public function getUserWhere($data) {
 		return $this->db
 			->where($data)
+			->join('province', 'province.prv_id = user.usr_province_id')
 			->get('user')
 			->result_array();
 	}

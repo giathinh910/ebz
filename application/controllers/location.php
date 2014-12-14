@@ -5,14 +5,23 @@ class Location extends CI_Controller {
 		parent::__construct();
 		$this->load->helper(array('html','url','form'));
 		$this->load->library(array('pagination','form_validation','session'));
-		$this->load->Model(array('Mlocation','Mprovince', 'Mcategory'));
+		$this->load->Model(array('Mlocation','Mprovince', 'Mcategory', 'Muser'));
 		date_default_timezone_set("Asia/Bangkok");
 	}
 	public function index() {
-		$data = array(
-			'categories' => $this->Mcategory->getAllCategory(),
-			'locations' => $this->Mlocation->getLocationWithSelectedField('*')
-		);
+		if($this->session->userdata('current_user_id') != null) {
+			$current_user_id = $this->session->userdata('current_user_id');
+			$data = array(
+				'categories' => $this->Mcategory->getAllCategory(),
+				'locations' => $this->Mlocation->getLocationWithSelectedField('*'),
+				'users' => $this->Muser->getUserWhere(array('usr_id' => $current_user_id))
+			);
+		} else {
+			$data = array(
+				'categories' => $this->Mcategory->getAllCategory(),
+				'locations' => $this->Mlocation->getLocationWithSelectedField('*')
+			);
+		}
 		$this->load->view('front/layout/head.php');
 		$this->load->view('front/map.php', $data);
 		$this->load->view('front/layout/foot.php');

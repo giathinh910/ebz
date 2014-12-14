@@ -1,6 +1,5 @@
 <div id="map" class="gt-home-map"></div>
 
-
 <?php if ($this->session->userdata('current_user_id') == null): ?>
 	<div class="container">
 		<div class="pricing">
@@ -107,7 +106,13 @@
 
 		function initialize() {
 			var map_canvas = document.getElementById('map');
-			var myLatlng = new google.maps.LatLng(21.027424, 105.832716);
+			<?php
+				if (isset($users)) {
+					echo 'var myLatlng = new google.maps.LatLng('.$users[0]['prv_coordination'].');';
+				} else {
+					echo 'var myLatlng = new google.maps.LatLng(21.027424, 105.832716);';
+				}
+			?>
 			var map_options = {
 				center: myLatlng,
 				zoom: 15,

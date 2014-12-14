@@ -25,6 +25,16 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label for="" class="col-sm-4 control-label">Tỉnh thành</label>
+					<div class="col-sm-8">
+						<select class="form-control" name="province">
+							<?php foreach ($provinces as $key => $province): ?>
+								<option value="<?php echo $province['prv_id'] ?>"><?php echo $province['prv_name'] ?></option>
+							<?php endforeach ?>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
 					<label for="" class="col-sm-4 control-label">Email</label>
 					<div class="col-sm-8">
 						<input type="email" class="form-control" id="" placeholder="Email" name="email">

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2014 at 05:16 AM
+-- Generation Time: Dec 14, 2014 at 05:35 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -189,6 +189,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `usr_password` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `usr_email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `usr_display_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `usr_province_id` int(11) NOT NULL DEFAULT '24',
   `usr_permission` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`usr_id`),
   UNIQUE KEY `usr_id` (`usr_id`)
@@ -198,14 +199,14 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`usr_id`, `usr_username`, `usr_password`, `usr_email`, `usr_display_name`, `usr_permission`) VALUES
-(1, 'buigiathinh', '4fd041317bbd4371dc5dff0150a33e9d', 'user@email.com', 'Gia Thịnh', 0),
-(2, 'lykhanhquan', '4fd041317bbd4371dc5dff0150a33e9d', 'user@email.com', 'Khánh Quân', 0),
-(3, 'admin', '4fd041317bbd4371dc5dff0150a33e9d', 'admin@email.com', 'Admin', 1),
-(4, 'vunguyetanh', '4fd041317bbd4371dc5dff0150a33e9d', 'user@email.com', 'Nguyệt Anh', 0),
-(5, 'hoangminhson', '4fd041317bbd4371dc5dff0150a33e9d', 'user@email.com', 'Minh Sơn', 0),
-(6, 'nguyenmanhcuong', '4fd041317bbd4371dc5dff0150a33e9d', 'user@email.com', 'Mạnh Cường', 0),
-(7, 'hoangthihongquye', '4fd041317bbd4371dc5dff0150a33e9d', 'user@email.com', 'Hồng Quyên', 0);
+INSERT INTO `user` (`usr_id`, `usr_username`, `usr_password`, `usr_email`, `usr_display_name`, `usr_province_id`, `usr_permission`) VALUES
+(1, 'buigiathinh', '4fd041317bbd4371dc5dff0150a33e9d', 'user@email.com', 'Gia Thịnh', 24, 0),
+(2, 'lykhanhquan', '4fd041317bbd4371dc5dff0150a33e9d', 'user@email.com', 'Khánh Quân', 24, 0),
+(3, 'admin', '4fd041317bbd4371dc5dff0150a33e9d', 'admin@email.com', 'Admin', 24, 1),
+(4, 'vunguyetanh', '4fd041317bbd4371dc5dff0150a33e9d', 'user@email.com', 'Nguyệt Anh', 24, 0),
+(5, 'hoangminhson', '4fd041317bbd4371dc5dff0150a33e9d', 'user@email.com', 'Minh Sơn', 24, 0),
+(6, 'nguyenmanhcuong', '4fd041317bbd4371dc5dff0150a33e9d', 'user@email.com', 'Mạnh Cường', 24, 0),
+(7, 'hoangthihongquye', '4fd041317bbd4371dc5dff0150a33e9d', 'user@email.com', 'Hồng Quyên', 24, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

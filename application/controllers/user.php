@@ -5,7 +5,7 @@ class User extends CI_Controller {
 		parent::__construct();
 		$this->load->helper(array('html','url','form'));
 		$this->load->library(array('pagination','form_validation','session'));
-		$this->load->Model(array('Muser'));
+		$this->load->Model(array('Muser', 'Mprovince'));
 	}
 	public function index() {
 		$this->login();
@@ -63,10 +63,13 @@ class User extends CI_Controller {
 		}
 		if ($this->session->flashdata('message') != null) {
 			$data = array(
-				'flashMessage' => $this->session->flashdata('message')
+				'flashMessage' => $this->session->flashdata('message'),
+				'provinces' => $this->Mprovince->getAllProvince(),
 			);
 		} else {
-			$data = "";
+			$data = array(
+				'provinces' => $this->Mprovince->getAllProvince(),
+			);
 		}
 		$this->load->view('front/layout/head.php');
 		$this->load->view('front/signup.php', $data);
@@ -80,7 +83,6 @@ class User extends CI_Controller {
 			'usr_display_name' => $this->input->post('display_name'),
 			'usr_username' => $this->input->post('username'),
 			'usr_password' => $this->input->post('password'),
-			'usr_email' => $this->input->post('email'),
 		);
 		if (!empty($this->Muser->getUserWhere(array('usr_username' => $post['usr_username'])))) {
 			$this->session->set_flashdata('message','Tên đăng nhập đã tồn tại');
@@ -94,6 +96,7 @@ class User extends CI_Controller {
 				'usr_username' => $this->input->post('username'),
 				'usr_password' => md5($this->input->post('password')[0]),
 				'usr_email' => $this->input->post('email'),
+				'usr_province_id' => $this->input->post('province'),
 			);
 			$this->Muser->createUser($data);
 			$this->session->set_flashdata('message','Tạo tài khoản <strong>THÀNH CÔNG</strong>, bạn có thể đăng nhập ngay');
