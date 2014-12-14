@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Host: localhost:3306
--- Generation Time: Dec 13, 2014 at 03:23 PM
--- Server version: 5.5.34
--- PHP Version: 5.5.10
+-- Host: 127.0.0.1
+-- Generation Time: Dec 14, 2014 at 05:16 AM
+-- Server version: 5.6.17
+-- PHP Version: 5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,11 +26,11 @@ SET time_zone = "+00:00";
 -- Table structure for table `category`
 --
 
-CREATE TABLE `category` (
+CREATE TABLE IF NOT EXISTS `category` (
   `ctg_id` int(11) NOT NULL AUTO_INCREMENT,
   `ctg_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`ctg_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `category`
@@ -38,8 +38,24 @@ CREATE TABLE `category` (
 
 INSERT INTO `category` (`ctg_id`, `ctg_name`) VALUES
 (1, 'Máy tính'),
-(2, 'Tin học'),
-(3, 'Giáo dục');
+(3, 'Giáo dục'),
+(4, 'Nông nghiệp'),
+(5, 'Thủy Hải sản'),
+(6, 'Điện thoại'),
+(9, 'Ẩm thực'),
+(10, 'Thời trang'),
+(11, 'Thủ công / mỹ nghệ'),
+(12, 'Vận tải'),
+(13, 'Xây dựng'),
+(14, 'Du lịch'),
+(15, 'Nghệ thuật'),
+(16, 'Kinh tế'),
+(17, 'Hành chính'),
+(18, 'Cá nhân'),
+(19, 'Sửa chữa / Điện tử'),
+(20, 'Sửa chữa / Cơ khí'),
+(21, 'Điện tử'),
+(22, 'Cơ khí');
 
 -- --------------------------------------------------------
 
@@ -47,7 +63,7 @@ INSERT INTO `category` (`ctg_id`, `ctg_name`) VALUES
 -- Table structure for table `location`
 --
 
-CREATE TABLE `location` (
+CREATE TABLE IF NOT EXISTS `location` (
   `loc_id` int(11) NOT NULL AUTO_INCREMENT,
   `loc_user_id` int(11) NOT NULL,
   `loc_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -62,7 +78,7 @@ CREATE TABLE `location` (
   `loc_brief` text COLLATE utf8_unicode_ci NOT NULL,
   `loc_detail` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`loc_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `location`
@@ -76,7 +92,8 @@ INSERT INTO `location` (`loc_id`, `loc_user_id`, `loc_name`, `loc_address`, `loc
 (6, 2, 'Bể bơi Liễu Giai', 'Ngõ 9 Văn Cao, Liễu Giai, Hoàn Kiếm', '', 'example@email.com', 1, '', 9, '21.038035, 105.818265', 'http://localhost/public/200_flat_icons/png/64px/19.png', 'Bể bơi xịn vcđ luôn', ''),
 (7, 2, 'Đền Trung Nha', 'Nghĩa Đô, Hà Nội, Vietnam', '+84 4 3733 6431', '', 1, '', 1, '21.045536, 105.801350', 'http://localhost/public/200_flat_icons/png/64px/1.png', '<p style>Rất đẹp</p>', ''),
 (8, 2, 'Ngoc Son Temple', 'Đinh Tiên Hoàng Hàng Trống, Hoàn Kiếm', '', 'example@email.com', 1, '', 1, '21.030683, 105.852400', 'http://localhost/public/200_flat_icons/png/64px/44.png', 'Cầu Thê Húc cong cong như con tôm dẫn vào đền Ngọc Sơn', '<h1>Ngoc Son Temple</h1>\n\n<p>Cầu Th&ecirc; H&uacute;c cong cong như con t&ocirc;m dẫn v&agrave;o đền Ngọc Sơn</p>\n'),
-(9, 2, 'Trường THCS Cát Linh', 'Đống Đa', '+84 4 3733 6431', '', 3, '', 24, '21.029063,105.829341', 'http://localhost/public/200_flat_icons/png/64px/69.png', '', '');
+(9, 2, 'Trường THCS Cát Linh', 'Đống Đa', '+84 4 3733 6431', '', 3, '', 24, '21.029063,105.829341', 'http://localhost/public/200_flat_icons/png/64px/69.png', '', ''),
+(10, 3, '', '', '', '', 9, '', 1, '', 'http://localhost/ebz/assets/ebz/images/icon/28.png', '', '');
 
 -- --------------------------------------------------------
 
@@ -84,7 +101,7 @@ INSERT INTO `location` (`loc_id`, `loc_user_id`, `loc_name`, `loc_address`, `loc
 -- Table structure for table `province`
 --
 
-CREATE TABLE `province` (
+CREATE TABLE IF NOT EXISTS `province` (
   `prv_id` int(11) NOT NULL AUTO_INCREMENT,
   `prv_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `prv_coordination` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -166,7 +183,7 @@ INSERT INTO `province` (`prv_id`, `prv_name`, `prv_coordination`) VALUES
 -- Table structure for table `user`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE IF NOT EXISTS `user` (
   `usr_id` int(11) NOT NULL AUTO_INCREMENT,
   `usr_username` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
   `usr_password` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
@@ -175,15 +192,20 @@ CREATE TABLE `user` (
   `usr_permission` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`usr_id`),
   UNIQUE KEY `usr_id` (`usr_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`usr_id`, `usr_username`, `usr_password`, `usr_email`, `usr_display_name`, `usr_permission`) VALUES
-(1, 'buigiathinh', '202cb962ac59075b964b07152d234b70', 'thinhbg@haintheme.com', 'Bui Gia Thinh', 1),
-(2, 'lykhanhquan', '202cb962ac59075b964b07152d234b70', 'quanrua@gmail.com', 'Quan Rua', 0);
+(1, 'buigiathinh', '4fd041317bbd4371dc5dff0150a33e9d', 'user@email.com', 'Gia Thịnh', 0),
+(2, 'lykhanhquan', '4fd041317bbd4371dc5dff0150a33e9d', 'user@email.com', 'Khánh Quân', 0),
+(3, 'admin', '4fd041317bbd4371dc5dff0150a33e9d', 'admin@email.com', 'Admin', 1),
+(4, 'vunguyetanh', '4fd041317bbd4371dc5dff0150a33e9d', 'user@email.com', 'Nguyệt Anh', 0),
+(5, 'hoangminhson', '4fd041317bbd4371dc5dff0150a33e9d', 'user@email.com', 'Minh Sơn', 0),
+(6, 'nguyenmanhcuong', '4fd041317bbd4371dc5dff0150a33e9d', 'user@email.com', 'Mạnh Cường', 0),
+(7, 'hoangthihongquye', '4fd041317bbd4371dc5dff0150a33e9d', 'user@email.com', 'Hồng Quyên', 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
