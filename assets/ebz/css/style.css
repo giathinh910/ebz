@@ -22,6 +22,29 @@ label {
 	height: 500px;
 	margin-bottom: 50px;
 }
+.gt-map-wrapper {
+	position: relative;
+}
+.gt-map-wrapper .overlay {
+	position: absolute;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: rgba(255,255,255,.8);
+}
+.gt-map-wrapper .overlay img {
+	position: absolute;
+	z-index: 101;
+	margin-left: -32px;
+	margin-top: -32px;
+	left: 50%;
+	top: 50%;
+	border-radius: 50%;
+	box-shadow: 0 0 50px 50px #fff;
+	background: #fff;
+}
 .gt-single-location-map {
 	height: 350px;
 	overflow: hidden;

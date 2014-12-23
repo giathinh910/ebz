@@ -1,4 +1,9 @@
-<div id="map" class="gt-home-map"></div>
+<div class="gt-map-wrapper">
+	<div class="overlay">
+		<img src="<?php echo base_url('assets/ebz/images/loader.gif') ?>" alt="">
+	</div>
+	<div id="map" class="gt-home-map"></div>
+</div>
 
 <?php if ($this->session->userdata('current_user_id') == null): ?>
 	<div class="container">
@@ -99,6 +104,10 @@
 				success: function(response){
 					handleData(response);
 				}
+			}).done(function() {
+				$( '.gt-map-wrapper .overlay' ).fadeOut( 200, function(){
+					$(this).remove();
+				});
 			});
 		}
 
